@@ -12,16 +12,13 @@ Enable `Optional Chaining` and many new ES features for [Vue.js SFC](https://vue
 
 ## Usage
 ``` js
-# 1:
- yarn add https://github.com/JuniorTour/vue-template-babel-compiler/tarball/master
+# 1: In your Vue project directory
+yarn add https://github.com/JuniorTour/vue-template-babel-compiler/tarball/main
 
 # 2: Run a script to
 # modify vue-template-es2015-compiler to this repo
 # (If this repo got merged into the official repo, this step can be simplified.)
 sh ./node_modules/vue-template-babel-compiler/updateVueTemplateBabelCompiler.sh
-
-# 3:
-yarn install
 
 # Enjoy~
 ```

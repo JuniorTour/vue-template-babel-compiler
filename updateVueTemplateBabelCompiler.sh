@@ -1,4 +1,4 @@
 #!/bin/sh
-json -I -f package.json -e "this.dependencies['vue-template-es2015-compiler']=\"bar\""
-json -I -f node_modules/@vue/component-compiler-utils/package.json  -e "this.dependencies['vue-template-es2015-compiler']=\"bar\""
+mv node_modules/vue-template-es2015-compiler node_modules/deprecated-vue-template-es2015-compiler
+mv node_modules/vue-template-babel-compiler node_modules/vue-template-es2015-compiler
 echo 'Update to vue-template-babel-compiler Success!'
