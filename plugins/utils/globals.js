@@ -1,6 +1,7 @@
 // allowed globals in Vue render functions.
 // same as in src/core/instance/proxy.js
-const names = 'Infinity,undefined,NaN,isFinite,isNaN,' +
+const names = 'BigInt,' + // new es syntax
+    'Infinity,undefined,NaN,isFinite,isNaN,' +
     'parseFloat,parseInt,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,' +
     'Math,Number,Date,Array,Object,Boolean,String,RegExp,Map,Set,JSON,Intl,' +
     'require,' + // for webpack

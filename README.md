@@ -20,16 +20,19 @@ yarn add https://github.com/JuniorTour/vue-template-babel-compiler/tarball/main
 # (If this repo got merged into the official repo, this step can be simplified.)
 sh ./node_modules/vue-template-babel-compiler/updateVueTemplateBabelCompiler.sh
 
-# Enjoy~
+# 3. Enjoy~
 ```
 
 ## TODO
 
-- Support `staticRenderFns = [renderFunc]`
-- More new ES features, such as: `nullish coalescing` and etc.
+- ~~[DONE] Support `__staticRenderFns__`~~
+- More new ES features in SFC template:
+  - ~~[DONE]'Bigint'~~
+  - `nullish coalescing`
+  - ......
 - publish NPM package
 - PR to [vue-template-es2015-compiler official repo](https://github.com/vuejs/vue-template-es2015-compiler)
   - Then we can use this simpler without run
 
 
-Welcome for issue, PR.
+### Welcome for issue, PR.

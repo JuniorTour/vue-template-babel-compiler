@@ -6,7 +6,8 @@
   "author": "JuniorTour",
   "license": "MIT",
   "files": [
-    "dist/index.js"
+    "dist/index.js",
+    "updateVueTemplateBabelCompiler.sh"
   ],
   "scripts": {
     "build": "rollup -c rollup.config.js",

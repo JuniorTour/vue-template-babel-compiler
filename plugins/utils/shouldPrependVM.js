@@ -7,7 +7,8 @@ import {createEleName, renderFuncName, vueModelName} from "../parse-with-stateme
 const t = require('@babel/types');
 import globals from './globals'
 
-export const RENDER_NAME = '__render__'
+const RENDER_NAME = '__render__'
+const STATIC_RENDER_FNS_NAME = '__staticRenderFns__'
 
 const REST_PARAM_HELPER_FUNC_NAMES = [
   // TODO notFunctionDeclare
@@ -29,7 +30,9 @@ function notPreserveName(nodeName) {
 }
 
 function isRenderFunc(node) {
-  return t.isVariableDeclarator(node) && node?.id.name === RENDER_NAME
+  if (!node) return
+  const name = node.id?.name
+  return t.isVariableDeclarator(node) && (name === RENDER_NAME || name === STATIC_RENDER_FNS_NAME)
 }
 
 function withinRenderFunc(path) {

@@ -119,3 +119,21 @@ test('optional chain should work', () => {
 
   expect(vm.$el.innerHTML).toMatch(`<h1>optional chain worked</h1>`)
 })
+
+// TODO
+// test('should work for __staticRenderFns__', () => {
+//   const vm = new Vue({
+//     ...compileAsFunctions(`
+//       <div><child></child></div>
+//     `),
+//     components: {
+//       child: {
+//         ...compileAsFunctions(`<div>child</div>`)
+//       }
+//     },
+//     data: {
+//     }
+//   }).$mount()
+//
+//   expect(vm.$el.innerHTML).toMatch(`<div>child</div>`)
+// })
