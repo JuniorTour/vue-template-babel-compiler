@@ -8,7 +8,7 @@ Enable `Optional Chaining` and many new ES features for [Vue.js SFC](https://vue
 ## DEMO
 ### [TODO: DEMO Repo]()
 
-![DEMO](https://user-images.githubusercontent.com/14243906/122681567-785f4880-d227-11eb-91e3-abc9ffc06524.png)
+![DEMO](https://user-images.githubusercontent.com/14243906/122856988-5b6f6600-d34a-11eb-89d6-21203b446ce4.png)
 
 ## Usage
 ``` js
@@ -25,14 +25,14 @@ sh ./node_modules/vue-template-babel-compiler/updateVueTemplateBabelCompiler.sh
 
 ## TODO
 
-- ~~[DONE] Support `__staticRenderFns__`~~
-- More new ES features in SFC template:
-  - ~~[DONE]'Bigint'~~
-  - `nullish coalescing`
-  - ......
-- publish NPM package
-- PR to [vue-template-es2015-compiler official repo](https://github.com/vuejs/vue-template-es2015-compiler)
-  - Then we can use this simpler without run
+- [x] Support `__staticRenderFns__`
+- [ ] More new ES features in SFC template:
+  - [x] `Bigint`
+  - [ ] `nullish coalescing`
+  - [ ] ......
+- [ ] publish NPM package
+- [ ] PR to [vue-template-es2015-compiler official repo](https://github.com/vuejs/vue-template-es2015-compiler)
+  - [ ] Then we can use this simpler without run
 
 
 ### Welcome for issue, PR.
