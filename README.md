@@ -1,22 +1,35 @@
 # vue-template-babel-compiler
 Enable `Optional Chaining` and many new ES features for [Vue.js SFC](https://vuejs.org/v2/guide/single-file-components.html) based on [Babel](https://babeljs.io/).
 
+<p align="center">
+  <a href="https://www.npmjs.com/package/vue-template-babel-compiler">
+    <img
+    src="https://img.shields.io/npm/v/vue-template-babel-compiler.svg?sanitize=true"
+    alt="Version">
+  </a>
+  <a href="https://www.npmjs.com/package/vue-template-babel-compiler">
+    <img
+    src="https://img.shields.io/npm/l/vue-template-babel-compiler.svg?sanitize=true"
+    alt="License">
+  </a>
+</p>
+
 ## Features
 - All features of [vue-template-es2015-compiler](https://github.com/vuejs/vue-template-es2015-compiler)
 - `Optional Chaining` and more new ES features
+  - [x] `Bigint`
+  - [ ] `nullish coalescing`
+  - [ ] ......
 
 ## DEMO
-### [TODO: DEMO Repo]()
-
 ![DEMO](https://user-images.githubusercontent.com/14243906/122856988-5b6f6600-d34a-11eb-89d6-21203b446ce4.png)
 
 ## Usage
-``` js
+``` bash
 # 1: In your Vue project directory
-yarn add https://github.com/JuniorTour/vue-template-babel-compiler/tarball/main
+yarn add vue-template-babel-compiler
 
-# 2: Run a script to
-# modify vue-template-es2015-compiler to this repo
+# 2: Run a script to substitute vue-template-es2015-compiler with this repo
 # (If this repo got merged into the official repo, this step can be simplified.)
 sh ./node_modules/vue-template-babel-compiler/updateVueTemplateBabelCompiler.sh
 
@@ -30,7 +43,7 @@ sh ./node_modules/vue-template-babel-compiler/updateVueTemplateBabelCompiler.sh
   - [x] `Bigint`
   - [ ] `nullish coalescing`
   - [ ] ......
-- [ ] publish NPM package
+- [x] publish [NPM package](https://www.npmjs.com/package/vue-template-babel-compiler)
 - [ ] PR to [vue-template-es2015-compiler official repo](https://github.com/vuejs/vue-template-es2015-compiler)
   - [ ] Then we can use this simpler without run
 
