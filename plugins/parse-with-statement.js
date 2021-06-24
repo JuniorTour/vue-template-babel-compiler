@@ -1,42 +1,17 @@
-var babel = require("@babel/core");
-const t = babel.types
+const t = require('@babel/types');
 
 export const vueModelName = '_vm'
 export const createEleName = '_h'
 export const renderFuncName = '_c'
+export const WithStatementReplaceComment = '__VUE_TEMPLATE_BABEL_COMPILER_WITH_PLACEHOLDER__'
 
 export default function parseWithStatementToVm() {
   return {
     visitor: {
       WithStatement(path) {
-        const curNodeBody = path.node.body.body[0]
-        path.replaceWithMultiple([
-          t.variableDeclaration('var', [
-            t.variableDeclarator(
-              t.identifier(vueModelName),
-              t.thisExpression()
-            ),
-          ]),
-          t.variableDeclaration('var', [
-            t.variableDeclarator(
-              t.identifier(createEleName),
-              t.memberExpression(t.identifier(vueModelName), t.identifier('$createElement'))
-            ),
-          ]),
-          t.variableDeclaration('var', [
-            t.variableDeclarator(t.identifier(renderFuncName),
-              t.logicalExpression(
-                '||',
-                t.memberExpression(
-                  t.memberExpression(t.identifier(vueModelName), t.identifier('_self')),
-                  t.identifier(renderFuncName)
-                ),
-                t.identifier(createEleName)
-              ),
-            ),
-          ]),
-          curNodeBody,
-        ])
+        const withStatementReturnBody = path.node.body.body[0]
+        t.addComment(withStatementReturnBody, "leading", WithStatementReplaceComment)
+        path.replaceWithMultiple([withStatementReturnBody])
       }
     },
   };

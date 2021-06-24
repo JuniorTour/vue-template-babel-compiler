@@ -1,17 +1,18 @@
 'use strict';
 
-var babel$2 = require("@babel/core");
+var t$2 = require('@babel/types');
 
-var t$2 = babel$2.types;
 var vueModelName = '_vm';
 var createEleName = '_h';
 var renderFuncName = '_c';
+var WithStatementReplaceComment = '__VUE_TEMPLATE_BABEL_COMPILER_WITH_PLACEHOLDER__';
 function parseWithStatementToVm() {
   return {
     visitor: {
       WithStatement(path) {
-        var curNodeBody = path.node.body.body[0];
-        path.replaceWithMultiple([t$2.variableDeclaration('var', [t$2.variableDeclarator(t$2.identifier(vueModelName), t$2.thisExpression())]), t$2.variableDeclaration('var', [t$2.variableDeclarator(t$2.identifier(createEleName), t$2.memberExpression(t$2.identifier(vueModelName), t$2.identifier('$createElement')))]), t$2.variableDeclaration('var', [t$2.variableDeclarator(t$2.identifier(renderFuncName), t$2.logicalExpression('||', t$2.memberExpression(t$2.memberExpression(t$2.identifier(vueModelName), t$2.identifier('_self')), t$2.identifier(renderFuncName)), t$2.identifier(createEleName)))]), curNodeBody]);
+        var withStatementReturnBody = path.node.body.body[0];
+        t$2.addComment(withStatementReturnBody, "leading", WithStatementReplaceComment);
+        path.replaceWithMultiple([withStatementReturnBody]);
       }
 
     }
@@ -145,7 +146,13 @@ function prependVm() {
   };
 }
 
-var babel = require('@babel/core'); // TODO es6 module || cjs
+function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+var babel = require('@babel/core');
+
+var matchWithRegex = new RegExp(escapeRegExp(`/*${WithStatementReplaceComment}*/`), 'g');
 
 module.exports = function transpile(code, opts) {
   // console.log('input code = ', code)
@@ -166,7 +173,8 @@ module.exports = function transpile(code, opts) {
     plugins: ['@babel/plugin-proposal-optional-chaining', '@babel/plugin-transform-block-scoping', '@babel/plugin-transform-destructuring', ['@babel/plugin-proposal-object-rest-spread', {
       useBuiltIns: true
     }], '@babel/plugin-transform-spread', '@babel/plugin-transform-arrow-functions', '@babel/plugin-transform-parameters', parseWithStatementToVm, prependVm]
-  }); // console.log(output.code)
+  });
+  output.code = output.code.replace(matchWithRegex, 'var _vm=this;\nvar _h=_vm.$createElement;\nvar _c=_vm._self._c||_h;\n'); // console.log(output.code)
 
   return output.code;
 };
