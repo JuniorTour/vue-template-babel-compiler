@@ -15,31 +15,29 @@
     "inspectTest": "npm run build && node --inspect-brk ./node_modules/jest/bin/jest.js",
     "prepublishOnly": "jest && npm run build"
   },
-  "devDependencies": {
-    "@babel/core": "^7.14.3",
-    "@babel/parser": "^7.14.2",
-    "jest": "^24.1.0",
-    "vue": "^2.6.0",
-    "vue-template-compiler": "^2.6.0"
-  },
   "jest": {
     "testPathIgnorePatterns": [
       "/node_modules/"
     ]
   },
+  "devDependencies": {
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-node-resolve": "^13.0.0",
+    "jest": "^24.1.0",
+    "np": "^7.5.0",
+    "rollup": "^2.52.1",
+    "vue": "^2.6.0",
+    "vue-template-compiler": "^2.6.0"
+  },
   "dependencies": {
-    "@babel/cli": "^7.14.3",
+    "@babel/types": "^7.14.5",
+    "@babel/core": "^7.14.3",
     "@babel/plugin-proposal-object-rest-spread": "^7.14.5",
     "@babel/plugin-proposal-optional-chaining": "^7.14.2",
     "@babel/plugin-transform-arrow-functions": "^7.14.5",
     "@babel/plugin-transform-block-scoping": "^7.14.5",
     "@babel/plugin-transform-destructuring": "^7.14.5",
     "@babel/plugin-transform-parameters": "^7.14.5",
-    "@babel/plugin-transform-spread": "^7.14.5",
-    "@babel/preset-env": "^7.14.4",
-    "@rollup/plugin-babel": "^5.3.0",
-    "@rollup/plugin-node-resolve": "^13.0.0",
-    "np": "^7.5.0",
-    "rollup": "^2.52.1"
+    "@babel/plugin-transform-spread": "^7.14.5"
   }
 }
