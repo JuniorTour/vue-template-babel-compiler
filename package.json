@@ -1,6 +1,6 @@
 {
   "name": "vue-template-babel-compiler",
-  "version": "0.2.1",
+  "version": "0.3.0-0",
   "description": "Post compiler for Vue template render functions to support ES features with Babel",
   "main": "dist/index.js",
   "author": "JuniorTour",
@@ -30,7 +30,6 @@
     "vue-template-compiler": "^2.6.0"
   },
   "dependencies": {
-    "@babel/types": "^7.14.5",
     "@babel/core": "^7.14.3",
     "@babel/plugin-proposal-object-rest-spread": "^7.14.5",
     "@babel/plugin-proposal-optional-chaining": "^7.14.2",
@@ -38,6 +37,7 @@
     "@babel/plugin-transform-block-scoping": "^7.14.5",
     "@babel/plugin-transform-destructuring": "^7.14.5",
     "@babel/plugin-transform-parameters": "^7.14.5",
-    "@babel/plugin-transform-spread": "^7.14.5"
+    "@babel/plugin-transform-spread": "^7.14.5",
+    "@babel/types": "^7.14.5"
   }
 }
