@@ -120,20 +120,25 @@ test('optional chain should work', () => {
   expect(vm.$el.innerHTML).toMatch(`<h1>optional chain worked</h1>`)
 })
 
-// TODO
-// test('should work for __staticRenderFns__', () => {
-//   const vm = new Vue({
-//     ...compileAsFunctions(`
-//       <div><child></child></div>
-//     `),
-//     components: {
-//       child: {
-//         ...compileAsFunctions(`<div>child</div>`)
-//       }
-//     },
-//     data: {
-//     }
-//   }).$mount()
-//
-//   expect(vm.$el.innerHTML).toMatch(`<div>child</div>`)
-// })
+test('should work for __staticRenderFns__', () => {
+  const transpileResult = transpile(`
+var __render__ = function () {with (this) {return _m(0)}}
+var __staticRenderFns__ = [
+  function () {
+    with (this) {
+      return _c(
+        'div', {attrs: {"id": "app"}},
+        [
+          _c('img', {attrs: {"alt": "Vue logo", "src": require("./assets/logo.png")}}),
+          _c('p', [_v(" static "),
+            _c('a', {attrs: {"href": "https://github.com/JuniorTour/vue-template-babel-compiler"}},
+              [_v(" JuniorTour/vue-template-babel-compiler ")])
+          ])
+        ]
+      )
+    }
+  }]
+`)
+
+  expect(transpileResult).toMatch(`[_vm._v(" JuniorTour/vue-template-babel-compiler ")]`)
+})

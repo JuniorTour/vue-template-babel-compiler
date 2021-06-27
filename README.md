@@ -7,10 +7,10 @@ Enable `Optional Chaining` and many new ES features for [Vue.js SFC](https://vue
     src="https://img.shields.io/npm/v/vue-template-babel-compiler.svg?sanitize=true"
     alt="Version">
   </a>
-  <a href="https://www.npmjs.com/package/vue-template-babel-compiler">
+  <a href="https://github.com/JuniorTour/vue-template-babel-compiler">
     <img
-    src="https://img.shields.io/npm/l/vue-template-babel-compiler.svg?sanitize=true"
-    alt="License">
+    src="https://img.shields.io/github/last-commit/JuniorTour/vue-template-babel-compiler?sanitize=true"
+    alt="last-commit">
   </a>
 </p>
 
