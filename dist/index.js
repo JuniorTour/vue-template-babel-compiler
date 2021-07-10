@@ -43,6 +43,7 @@ var STATIC_RENDER_FNS_NAME = '__staticRenderFns__';
 var REST_PARAM_HELPER_FUNC_NAMES = [// TODO notFunctionDeclare
 '_objectWithoutProperties', '_objectWithoutPropertiesLoose'];
 var PRESERVE_NAMES = [vueModelName, renderFuncName, createEleName, ...REST_PARAM_HELPER_FUNC_NAMES, // TODO notGlobalVar
+// TODO FIXME var _excluded = ["a"], _excluded2 = ["x", "y"];
 '_excluded'];
 
 function notPreserveName(nodeName) {
@@ -76,8 +77,8 @@ function shouldPrependVmNew(path) {
   if (!t$1.isProgram(scope.path) && !(t$1.isVariableDeclarator(parent) && nodeName === RENDER_NAME) && notPreserveName(nodeName) && withinRenderFunc(scope.path) // not id of a Declaration:
   && !t$1.isVariableDeclarator(parent) // not a params of a function
   && !(t$1.isFunctionExpression(parent) && parent.params.indexOf(node) > -1) // not a key of Property
-  && !(t$1.isObjectProperty(parent) && path.parent.key === node) // not a property of a MemberExpression
-  && !(t$1.isMemberExpression(parent) && path.parent.property === node) // not in an Array destructure pattern
+  && !(t$1.isObjectProperty(parent) && parent.key === node) // not a property of a MemberExpression
+  && !(t$1.isMemberExpression(parent) && parent.property === node) // not in an Array destructure pattern
   && !t$1.isArrayPattern(parent) // not in an Object destructure pattern
   && !t$1.isObjectPattern(parent.parent) // skip globals + commonly used shorthands
   && !hash[nodeName] // not cur function param
@@ -118,14 +119,8 @@ module.exports = function transpile(code) {
     filename: 'compiledTemplate',
     // not enable strict mode, in order to parse WithStatement
     sourceType: 'script',
-    assumptions: {
-      setSpreadProperties: true
-    },
-    plugins: ['@babel/plugin-proposal-optional-chaining', '@babel/plugin-transform-block-scoping', '@babel/plugin-transform-destructuring', ['@babel/plugin-proposal-object-rest-spread', {
-      useBuiltIns: true
-    }], '@babel/plugin-transform-spread', '@babel/plugin-transform-arrow-functions', '@babel/plugin-transform-parameters', parseWithStatementToVm, prependVm]
+    plugins: ['@babel/plugin-proposal-optional-chaining', '@babel/plugin-transform-block-scoping', '@babel/plugin-transform-destructuring', '@babel/plugin-transform-spread', '@babel/plugin-transform-arrow-functions', '@babel/plugin-transform-parameters', parseWithStatementToVm, prependVm]
   });
-  output.code = output.code.replace(matchWithRegex, 'var _vm=this;\nvar _h=_vm.$createElement;\nvar _c=_vm._self._c||_h;\n'); // console.log(output.code)
-
+  output.code = output.code.replace(matchWithRegex, 'var _vm=this;\nvar _h=_vm.$createElement;\nvar _c=_vm._self._c||_h;\n');
   return output.code;
 };

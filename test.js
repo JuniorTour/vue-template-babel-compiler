@@ -78,6 +78,15 @@ test('rest spread in scope position', () => {
   )
 })
 
+// TODO
+// test('should not output destructure', () => {
+//   const vm = new Vue({
+//     ...compileAsFunctions(`
+//       <foo v-slot="{ foo, ...rest }">{{ rest }}</foo>
+//     `),
+//   })
+// })
+
 test('trailing function comma', () => {
   const spy = jest.fn()
   const vm = new Vue({
@@ -92,32 +101,38 @@ test('trailing function comma', () => {
   expect(spy).toHaveBeenCalled()
 })
 
-test('v-model code', () => {
-  const vm = new Vue({
-    ...compileAsFunctions(`
-      <input v-model="text" />
-    `),
-    data: {
-      text: 'foo'
-    }
-  }).$mount()
-})
-
-test('optional chain should work', () => {
+test('v-model should work', () => {
+  const vModelVal = 'foo'
   const vm = new Vue({
     ...compileAsFunctions(`
       <div>
-        <h1 v-if="optional?.chain">optional chain worked</h1>
+            <input v-model="text" />
+      </div>
+    `),
+    data: {
+      text: vModelVal
+    }
+  }).$mount()
+
+  expect(vm.$el.innerHTML).toMatch(`<input>`)
+  expect(vm.$el.querySelector('input').value).toMatch(vModelVal)
+})
+
+test('optional chaining should work', () => {
+  const vm = new Vue({
+    ...compileAsFunctions(`
+      <div>
+        <h1 v-if="optional?.chaining">optional chaining worked</h1>
       </div>
     `),
     data: {
       optional: {
-        chain: true
+        chaining: true
       }
     }
   }).$mount()
 
-  expect(vm.$el.innerHTML).toMatch(`<h1>optional chain worked</h1>`)
+  expect(vm.$el.innerHTML).toMatch(`<h1>optional chaining worked</h1>`)
 })
 
 test('should work for __staticRenderFns__', () => {

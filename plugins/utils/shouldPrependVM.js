@@ -21,6 +21,7 @@ const PRESERVE_NAMES = [
   createEleName,
   ...REST_PARAM_HELPER_FUNC_NAMES,
   // TODO notGlobalVar
+  // TODO FIXME var _excluded = ["a"], _excluded2 = ["x", "y"];
   '_excluded',
 ]
 
@@ -58,9 +59,9 @@ export function shouldPrependVmNew(path) {
     // not a params of a function
     && !(t.isFunctionExpression(parent) && parent.params.indexOf(node) > -1)
     // not a key of Property
-    && !(t.isObjectProperty(parent) && path.parent.key === node)
+    && !(t.isObjectProperty(parent) && parent.key === node)
     // not a property of a MemberExpression
-    && !(t.isMemberExpression(parent) && path.parent.property === node)
+    && !(t.isMemberExpression(parent) && parent.property === node)
     // not in an Array destructure pattern
     && !t.isArrayPattern(parent)
     // not in an Object destructure pattern

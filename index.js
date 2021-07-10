@@ -13,14 +13,10 @@ module.exports = function transpile(code) {
     filename: 'compiledTemplate',
     // not enable strict mode, in order to parse WithStatement
     sourceType: 'script',
-    assumptions: {
-      setSpreadProperties: true,
-    },
     plugins: [
       '@babel/plugin-proposal-optional-chaining',
       '@babel/plugin-transform-block-scoping',
       '@babel/plugin-transform-destructuring',
-      ['@babel/plugin-proposal-object-rest-spread', {useBuiltIns: true}],
       '@babel/plugin-transform-spread',
       '@babel/plugin-transform-arrow-functions',
       '@babel/plugin-transform-parameters',
@@ -29,6 +25,5 @@ module.exports = function transpile(code) {
     ],
   })
   output.code = output.code.replace(matchWithRegex, 'var _vm=this;\nvar _h=_vm.$createElement;\nvar _c=_vm._self._c||_h;\n')
-  // console.log(output.code)
   return output.code
 }
