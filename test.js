@@ -1,4 +1,4 @@
-const transpile = require('./dist/index.js')
+const transpile = require('./lib/index.js')
 const Vue = require('vue')
 const {compile} = require('vue-template-compiler')
 

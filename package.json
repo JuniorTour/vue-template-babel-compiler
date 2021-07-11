@@ -2,11 +2,11 @@
   "name": "vue-template-babel-compiler",
   "version": "0.5.0",
   "description": "Post compiler for Vue template render functions to support ES features with Babel",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
   "author": "JuniorTour",
   "license": "MIT",
   "files": [
-    "dist/index.js",
+    "lib/index.js",
     "updateVueTemplateBabelCompiler.sh"
   ],
   "scripts": {
