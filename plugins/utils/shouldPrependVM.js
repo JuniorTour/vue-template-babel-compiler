@@ -2,7 +2,7 @@
 Interpret Bubble's logic:
 https://github.com/yyx990803/buble/blob/f5996c9cdb2e61cb7dddf0f6c6f25d0f3f600055/src/utils/prependVm.js
 */
-import globals from './globals'
+import globals from '../constants/globals'
 const t = require('@babel/types');
 
 export function shouldPrependVmNew(path) {

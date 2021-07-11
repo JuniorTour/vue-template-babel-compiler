@@ -1,16 +1,10 @@
 'use strict';
 
 // allowed globals in Vue render functions.
-// same as in src/core/instance/proxy.js
-// TODO use Array
 // TODO add option to customize
-var names = 'BigInt,' + // new es syntax
-'Infinity,undefined,NaN,isFinite,isNaN,' + 'parseFloat,parseInt,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,' + 'Math,Number,Date,Array,Object,Boolean,String,RegExp,Map,Set,JSON,Intl,' + 'require,' + // for webpack
-'arguments,' + // parsed as identifier but is a special keyword...
-'_vm,_h,_c'; // cached to save property access (_c for ^2.1.5)
-
+var GLOBALS_IN_TEMPLATE = ["BigInt", "Infinity", "undefined", "NaN", "isFinite", "isNaN", "parseFloat", "parseInt", "decodeURI", "decodeURIComponent", "encodeURI", "encodeURIComponent", "Math", "Number", "Date", "Array", "Object", "Boolean", "String", "RegExp", "Map", "Set", "JSON", "Intl", "require", "arguments", "_vm", "_h", "_c"];
 var hash = Object.create(null);
-names.split(',').forEach(name => {
+GLOBALS_IN_TEMPLATE.forEach(name => {
   hash[name] = true;
 });
 
