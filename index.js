@@ -1,5 +1,5 @@
-import prependVm from './plugins/prepend-vm'
-import parseWithStatementToVm, {WithStatementReplaceComment} from './plugins/parse-with-statement'
+import parseWithStatementToVm from './plugins/parse-with-statement'
+import {WithStatementReplaceComment} from "./plugins/constants/preservedNames"
 import {escapeRegExp} from "./utils/string";
 const babel = require('@babel/core')
 
@@ -21,7 +21,6 @@ module.exports = function transpile(code) {
       '@babel/plugin-transform-arrow-functions',
       '@babel/plugin-transform-parameters',
       parseWithStatementToVm,
-      prependVm,
     ],
   })
   output.code = output.code.replace(matchWithRegex, 'var _vm=this;\nvar _h=_vm.$createElement;\nvar _c=_vm._self._c||_h;\n')

@@ -52,7 +52,7 @@ test('arg spread', () => {
     <button @click="(...args) => { store.foo(...args) }">Go</button>
   `)
   const code = transpile(addWrapperForTranspile(res.render))
-  expect(code).toMatch(`(_store = _vm.store).foo.apply(_store, arguments);`)
+  expect(code).toMatch(`(_vm$store = _vm.store).foo.apply(_vm$store, arguments)`)
 })
 
 test('rest spread in scope position', () => {

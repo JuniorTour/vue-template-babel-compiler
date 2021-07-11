@@ -1,30 +1,13 @@
 'use strict';
 
-var t$2 = require('@babel/types');
-
-var vueModelName = '_vm';
-var createEleName = '_h';
-var renderFuncName = '_c';
-var WithStatementReplaceComment = '__VUE_TEMPLATE_BABEL_COMPILER_WITH_PLACEHOLDER__';
-function parseWithStatementToVm() {
-  return {
-    visitor: {
-      WithStatement(path) {
-        var withStatementReturnBody = path.node.body.body[0];
-        t$2.addComment(withStatementReturnBody, "leading", WithStatementReplaceComment);
-        path.replaceWithMultiple([withStatementReturnBody]);
-      }
-
-    }
-  };
-}
-
 // allowed globals in Vue render functions.
 // same as in src/core/instance/proxy.js
+// TODO use Array
+// TODO add option to customize
 var names = 'BigInt,' + // new es syntax
 'Infinity,undefined,NaN,isFinite,isNaN,' + 'parseFloat,parseInt,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,' + 'Math,Number,Date,Array,Object,Boolean,String,RegExp,Map,Set,JSON,Intl,' + 'require,' + // for webpack
 'arguments,' + // parsed as identifier but is a special keyword...
-'_h,_c'; // cached to save property access (_c for ^2.1.5)
+'_vm,_h,_c'; // cached to save property access (_c for ^2.1.5)
 
 var hash = Object.create(null);
 names.split(',').forEach(name => {
@@ -38,45 +21,19 @@ https://github.com/yyx990803/buble/blob/f5996c9cdb2e61cb7dddf0f6c6f25d0f3f600055
 
 var t$1 = require('@babel/types');
 
-var RENDER_NAME = '__render__';
-var STATIC_RENDER_FNS_NAME = '__staticRenderFns__';
-var REST_PARAM_HELPER_FUNC_NAMES = [// TODO notFunctionDeclare
-'_objectWithoutProperties', '_objectWithoutPropertiesLoose'];
-var PRESERVE_NAMES = [vueModelName, renderFuncName, createEleName, ...REST_PARAM_HELPER_FUNC_NAMES, // TODO notGlobalVar
-// TODO FIXME var _excluded = ["a"], _excluded2 = ["x", "y"];
-'_excluded'];
-
-function notPreserveName(nodeName) {
-  return !PRESERVE_NAMES.includes(nodeName);
-}
-
-function isRenderFunc(node) {
-  var _node$id;
-
-  if (!node) return;
-  var name = (_node$id = node.id) === null || _node$id === void 0 ? void 0 : _node$id.name;
-  return t$1.isVariableDeclarator(node) && (name === RENDER_NAME || name === STATIC_RENDER_FNS_NAME);
-}
-
-function withinRenderFunc(path) {
-  while (path && path.node && !t$1.isProgram(path.node) && !isRenderFunc(path.node)) {
-    path = path.parentPath;
-  }
-
-  return isRenderFunc(path.node);
-}
-
 function shouldPrependVmNew(path) {
-  var _scope$block$params;
+  var _scope$path, _scope$block$params;
 
   var parent = path.parent;
   var node = path.node;
   var nodeName = node.name;
   var scope = path.scope;
 
-  if (!t$1.isProgram(scope.path) && !(t$1.isVariableDeclarator(parent) && nodeName === RENDER_NAME) && notPreserveName(nodeName) && withinRenderFunc(scope.path) // not id of a Declaration:
+  if ( // not function parameter destructuring
+  ((_scope$path = scope.path) === null || _scope$path === void 0 ? void 0 : _scope$path.listKey) !== 'params' // not a id of a Declaration:
   && !t$1.isVariableDeclarator(parent) // not a params of a function
-  && !(t$1.isFunctionExpression(parent) && parent.params.indexOf(node) > -1) // not a key of Property
+  && !(t$1.isFunctionExpression(parent) && parent.params.indexOf(node) > -1) // not a property of OptionalMemberExpression
+  && !(t$1.isOptionalMemberExpression(parent) && parent.property === node) // not a key of Property
   && !(t$1.isObjectProperty(parent) && parent.key === node) // not a property of a MemberExpression
   && !(t$1.isMemberExpression(parent) && parent.property === node) // not in an Array destructure pattern
   && !t$1.isArrayPattern(parent) // not in an Object destructure pattern
@@ -88,16 +45,27 @@ function shouldPrependVmNew(path) {
   }
 }
 
-var babel$1 = require("@babel/core");
+var vueModelName = '_vm';
+var WithStatementReplaceComment = '__VUE_TEMPLATE_BABEL_COMPILER_WITH_PLACEHOLDER__';
 
-var t = babel$1.types;
-function prependVm() {
+var t = require('@babel/types');
+
+var nestedVisitor = {
+  Identifier(path) {
+    if (shouldPrependVmNew(path)) {
+      path.replaceWith(t.memberExpression(t.identifier(vueModelName), path.node));
+    }
+  }
+
+};
+function parseWithStatementToVm() {
   return {
     visitor: {
-      Identifier(path) {
-        if (shouldPrependVmNew(path)) {
-          path.replaceWith(t.memberExpression(t.identifier(vueModelName), path.node));
-        }
+      WithStatement(path) {
+        path.traverse(nestedVisitor);
+        var withStatementReturnBody = path.node.body.body[0];
+        t.addComment(withStatementReturnBody, "leading", WithStatementReplaceComment);
+        path.replaceWithMultiple([withStatementReturnBody]);
       }
 
     }
@@ -119,7 +87,7 @@ module.exports = function transpile(code) {
     filename: 'compiledTemplate',
     // not enable strict mode, in order to parse WithStatement
     sourceType: 'script',
-    plugins: ['@babel/plugin-proposal-optional-chaining', '@babel/plugin-transform-block-scoping', '@babel/plugin-transform-destructuring', '@babel/plugin-transform-spread', '@babel/plugin-transform-arrow-functions', '@babel/plugin-transform-parameters', parseWithStatementToVm, prependVm]
+    plugins: ['@babel/plugin-proposal-optional-chaining', '@babel/plugin-transform-block-scoping', '@babel/plugin-transform-destructuring', '@babel/plugin-transform-spread', '@babel/plugin-transform-arrow-functions', '@babel/plugin-transform-parameters', parseWithStatementToVm]
   });
   output.code = output.code.replace(matchWithRegex, 'var _vm=this;\nvar _h=_vm.$createElement;\nvar _c=_vm._self._c||_h;\n');
   return output.code;
