@@ -62,6 +62,8 @@ function parseWithStatementToVm() {
   return {
     visitor: {
       WithStatement(path) {
+        // only traverse children ast of `with(this) {...}` part,
+        // just like the `identifier.program.inWith` of bubble's logic
         path.traverse(nestedVisitor);
         var withStatementReturnBody = path.node.body.body[0];
         t.addComment(withStatementReturnBody, "leading", WithStatementReplaceComment);

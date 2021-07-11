@@ -53,12 +53,16 @@ test('arg spread', () => {
   `)
   const code = transpile(addWrapperForTranspile(res.render))
   expect(code).toMatch(`(_vm$store = _vm.store).foo.apply(_vm$store, arguments)`)
+  const spreadOperator = '...'
+  expect(code).not.toMatch(spreadOperator)
 })
 
 test('rest spread in scope position', () => {
   const vm = new Vue({
     ...compileAsFunctions(`
-      <foo v-slot="{ foo, ...rest }">{{ rest }}</foo>
+      <div>
+        <foo v-slot="{ foo, ...rest }">{{ rest }}</foo><foo v-slot="{ bar, ...rest }">{{ rest }}</foo>
+      </div>
     `),
     components: {
       foo: {
@@ -73,19 +77,14 @@ test('rest spread in scope position', () => {
     }
   }).$mount()
 
+  function stringify(obj) {
+    return JSON.stringify(obj, null, 2)
+  }
+
   expect(vm.$el.innerHTML).toMatch(
-    JSON.stringify({bar: 2, baz: 3}, null, 2)
+    `<div>${stringify({bar: 2, baz: 3})}</div><div>${stringify({foo: 1, baz: 3})}</div>`
   )
 })
-
-// TODO
-// test('should not output destructure', () => {
-//   const vm = new Vue({
-//     ...compileAsFunctions(`
-//       <foo v-slot="{ foo, ...rest }">{{ rest }}</foo>
-//     `),
-//   })
-// })
 
 test('trailing function comma', () => {
   const spy = jest.fn()
