@@ -26,11 +26,12 @@ Enable `Optional Chaining` and many new ES features for [Vue.js SFC](https://vue
 
 ## Usage
 ``` bash
-# 1: In your Vue project directory
-yarn add vue-template-babel-compiler
+# 1: Install in your Vue project directory
+npm install --save-dev vue-template-babel-compiler
+# or:
+yarn add vue-template-babel-compiler --dev
 
-# 2: Run a script to substitute vue-template-es2015-compiler with this repo
-# (If this repo got merged into the official repo, this step can be simplified.)
+# 2: Run a script to substitute vue-template-es2015-compiler with this repo (To be simplified)
 sh ./node_modules/vue-template-babel-compiler/updateVueTemplateBabelCompiler.sh
 
 # 3. Enjoy~
@@ -44,6 +45,7 @@ sh ./node_modules/vue-template-babel-compiler/updateVueTemplateBabelCompiler.sh
   - [ ] `nullish coalescing`
   - [ ] ......
 - [x] publish [NPM package](https://www.npmjs.com/package/vue-template-babel-compiler)
+- [ ] More Usage
 - [ ] PR to [vue-template-es2015-compiler official repo](https://github.com/vuejs/vue-template-es2015-compiler)
   - [ ] Then we can use this simpler without run
 
