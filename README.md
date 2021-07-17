@@ -19,10 +19,10 @@ Enable `Optional Chaining` and many new ES features for [Vue.js SFC](https://vue
 - `Optional Chaining` and more new ES features
   - [x] `Bigint`
   - [x] `nullish coalescing`
-  - [ ] ......
+  - [ ] Customization......
 
 ## DEMO
-![DEMO](https://user-images.githubusercontent.com/14243906/122856988-5b6f6600-d34a-11eb-89d6-21203b446ce4.png)
+![DEMO](https://user-images.githubusercontent.com/14243906/126038645-61bc6c2a-25bb-4dc5-9981-e2b1d216385e.png)
 
 ## Usage
 ``` bash
