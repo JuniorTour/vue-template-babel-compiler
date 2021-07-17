@@ -14,6 +14,7 @@ module.exports = function transpile(code) {
     // not enable strict mode, in order to parse WithStatement
     sourceType: 'script',
     plugins: [
+      '@babel/plugin-proposal-nullish-coalescing-operator',
       '@babel/plugin-proposal-optional-chaining',
       '@babel/plugin-transform-block-scoping',
       '@babel/plugin-transform-destructuring',

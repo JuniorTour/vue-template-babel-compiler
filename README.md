@@ -18,7 +18,7 @@ Enable `Optional Chaining` and many new ES features for [Vue.js SFC](https://vue
 - All features of [vue-template-es2015-compiler](https://github.com/vuejs/vue-template-es2015-compiler)
 - `Optional Chaining` and more new ES features
   - [x] `Bigint`
-  - [ ] `nullish coalescing`
+  - [x] `nullish coalescing`
   - [ ] ......
 
 ## DEMO
@@ -40,10 +40,8 @@ sh ./node_modules/vue-template-babel-compiler/updateVueTemplateBabelCompiler.sh
 ## TODO
 
 - [x] Support `__staticRenderFns__`
-- [ ] More new ES features in SFC template:
-  - [x] `Bigint`
-  - [ ] `nullish coalescing`
-  - [ ] ......
+- [ ] More new ES features in SFC <template>
+- [ ] Customize options for babel and globals in SFC <template>
 - [x] publish [NPM package](https://www.npmjs.com/package/vue-template-babel-compiler)
 - [ ] More Usage
 - [ ] PR to [vue-template-es2015-compiler official repo](https://github.com/vuejs/vue-template-es2015-compiler)
