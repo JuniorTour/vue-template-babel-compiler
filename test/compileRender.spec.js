@@ -2,12 +2,16 @@ const transpile = require('../lib')
 const Vue = require('vue')
 const {compile} = require('vue-template-compiler')
 
+function transpileWithOption(code) {
+  return transpile(code, {transforms: {stripWithFunctional: false}})
+}
+
 function addWrapperForTranspile(code) {
   return `var __render__ = function (){${code}}`
 }
 
 const toFunction = code => {
-  code = transpile(addWrapperForTranspile(code))
+  code = transpileWithOption(addWrapperForTranspile(code))
   code = code.replace(/var __render__ = function \(\) \{/g, '').slice(0, -2)
   return new Function(code)
 }
@@ -51,7 +55,7 @@ test('arg spread', () => {
   const res = compile(`
     <button @click="(...args) => { store.foo(...args) }">Go</button>
   `)
-  const code = transpile(addWrapperForTranspile(res.render))
+  const code = transpileWithOption(addWrapperForTranspile(res.render))
   expect(code).toMatch(`(_vm$store = _vm.store).foo.apply(_vm$store, arguments)`)
   const spreadOperator = '...'
   expect(code).not.toMatch(spreadOperator)
@@ -135,7 +139,7 @@ test('should work for optional chaining', () => {
 })
 
 test('should work for __staticRenderFns__', () => {
-  const transpileResult = transpile(`
+  const transpileResult = transpileWithOption(`
 var __render__ = function () {with (this) {return _m(0)}}
 var __staticRenderFns__ = [
   function () {
