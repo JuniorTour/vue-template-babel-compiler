@@ -1,4 +1,4 @@
-const transpile = require('../lib')
+const templateCompiler = require('../lib')
 const Vue = require('vue')
 
 // TODO enable esm `import {}` for jest
@@ -8,7 +8,7 @@ function toFunction(code) {
 
 test('template compile should work', () => {
   const msg = 'Hello vue-template-babel-compiler'
-  const {ast, render, staticRenderFns, tips, errors} = transpile.compile(`<div>${msg}</div>`)
+  const {ast, render, staticRenderFns, tips, errors} = templateCompiler.compile(`<div>${msg}</div>`)
 
   const vm = new Vue({
     render: toFunction(render)
@@ -20,35 +20,21 @@ test('template compile should work', () => {
 
 test('should extend template compile', () => {
   const functionType = 'function'
-  expect(typeof transpile).toMatch(functionType)
-  expect(typeof transpile.compile).toMatch(functionType)
-  expect(typeof transpile.parseComponent).toMatch(functionType)
-  expect(typeof transpile.compileToFunctions).toMatch(functionType)
-  expect(typeof transpile.ssrCompile).toMatch(functionType)
-  expect(typeof transpile.ssrCompileToFunctions).toMatch(functionType)
-  expect(typeof transpile.generateCodeFrame).toMatch(functionType)
+  expect(typeof templateCompiler).toMatch(functionType)
+  expect(typeof templateCompiler.compile).toMatch(functionType)
+  expect(typeof templateCompiler.parseComponent).toMatch(functionType)
+  expect(typeof templateCompiler.compileToFunctions).toMatch(functionType)
+  expect(typeof templateCompiler.ssrCompile).toMatch(functionType)
+  expect(typeof templateCompiler.ssrCompileToFunctions).toMatch(functionType)
+  expect(typeof templateCompiler.generateCodeFrame).toMatch(functionType)
 })
 
-// TODO functional component case
-// test('should work for functional component', () => {
-//   const options = {
-//     transforms: {
-//       stripWithFunctional: true
-//     }
-//   }
-//   const msg = 'Hello vue-template-babel-compiler'
-//   const {
-//     ast,
-//     render,
-//     staticRenderFns,
-//     tips,
-//     errors
-//   } = transpile.compile(`<div>${msg}</div>`, options)
-//
-//   const vm = new Vue({
-//     render: toFunction(render)
-//   }).$mount()
-//
-//   expect(vm.$el.innerHTML).toMatch(msg)
-//   expect(errors.length === 0).toBeTruthy()
-// })
+test('should work for functional component', () => {
+  const msg = 'Functional Component'
+
+  const {render} = templateCompiler.compile(
+    `<div>${msg}</div>`,
+    {filename: 'foo.functional.js'})
+
+  expect(render).toMatch('var _c=_vm._c')
+})

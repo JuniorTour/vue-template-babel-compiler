@@ -10,9 +10,7 @@ const functionalWithReplacement = 'var _c=_vm._c;\n'
 
 export function renderCompiler(code, options) {
   // TODO add customize individual options
-  const fileNameHasFunctional = options?.filename
-    ?.includes(options?.functionalComponentFileIdentifier || '.functional')
-  const isFunctional = fileNameHasFunctional || options?.transforms?.stripWithFunctional
+  const isFunctional = options?.transforms?.stripWithFunctional
 
   const output = babel.transformSync(code, {
     filename: 'compiledTemplate',

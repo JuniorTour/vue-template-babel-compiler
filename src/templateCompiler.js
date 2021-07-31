@@ -30,7 +30,8 @@ function getArrayItems(code) {
 const renderSeparator = '/* renderSeparator */'
 
 export function compileTemplate(source, options) {
-  const isFunctional = options?.transforms?.stripWithFunctional
+  const isFunctional = options?.filename
+    ?.includes(options?.functionalComponentFileIdentifier || '.functional')
 
   const {ast, render, staticRenderFns, tips, errors} = templateCompiler.compile(source, options)
 
@@ -41,7 +42,7 @@ export function compileTemplate(source, options) {
     code += `var staticRenderFns = [${staticRenderFns.map((render) => toFunction(render, isFunctional))}]`
   }
 
-  const [compiledRender, compiledStaticRenders] = renderCompiler(code, options).split(renderSeparator)
+  const [compiledRender, compiledStaticRenders] = renderCompiler(code, {transforms: {stripWithFunctional: isFunctional}}).split(renderSeparator)
 
   return {
     ast,
