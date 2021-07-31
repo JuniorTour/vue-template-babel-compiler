@@ -6,7 +6,7 @@ const babel = require('@babel/core')
 
 const matchWithRegex = new RegExp(escapeRegExp(`/*${WithStatementReplaceComment}*/`), 'g')
 
-export function compileRenderCode(code) {
+export function renderCompiler(code) {
   const output = babel.transformSync(code, {
     filename: 'compiledTemplate',
     // not enable strict mode, in order to parse WithStatement

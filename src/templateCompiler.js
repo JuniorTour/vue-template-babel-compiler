@@ -1,6 +1,6 @@
-import {compileRenderCode} from "./compileRenderCode"
+import {renderCompiler} from "./renderCompiler"
 
-const compiler = require('vue-template-compiler')
+const templateCompiler = require('vue-template-compiler')
 
 function toFunction(code, isFunctional) {
   return `function (${isFunctional ? `_h,_vm` : ``}) {${code}}`
@@ -29,10 +29,10 @@ function getArrayItems(code) {
 
 const renderSeparator = '/* renderSeparator */'
 
-export function compileTemplateCode(source, options) {
+export function compileTemplate(source, options) {
   const isFunctional = options?.transforms?.stripWithFunctional
 
-  const {ast, render, staticRenderFns, tips, errors} = compiler.compile(source, options)
+  const {ast, render, staticRenderFns, tips, errors} = templateCompiler.compile(source, options)
 
   // TODO rm semicolon && \n : https://babeljs.io/docs/en/options#minified
   let code = `var render = ${toFunction(render, isFunctional)}` + ';'+ renderSeparator
@@ -41,7 +41,7 @@ export function compileTemplateCode(source, options) {
     code += `var staticRenderFns = [${staticRenderFns.map((render) => toFunction(render, isFunctional))}]`
   }
 
-  const [compiledRender, compiledStaticRenders] = compileRenderCode(code).split(renderSeparator)
+  const [compiledRender, compiledStaticRenders] = renderCompiler(code).split(renderSeparator)
 
   return {
     ast,
@@ -50,4 +50,11 @@ export function compileTemplateCode(source, options) {
     tips,
     errors
   }
+}
+
+export function extendTemplateCompiler(obj) {
+  for (const key in templateCompiler) {
+    obj[key] = templateCompiler[key]
+  }
+  obj.compile = compileTemplate
 }

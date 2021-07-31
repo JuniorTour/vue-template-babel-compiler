@@ -1,15 +1,10 @@
-import {compileRenderCode} from "./compileRenderCode"
-import {compileTemplateCode} from "./compileTemplateCode"
+import {renderCompiler} from "./renderCompiler"
+import {extendTemplateCompiler} from "./templateCompiler"
 
-module.exports = function(source, options) {
-  let ret = {}
-  const compileRenderMode = Boolean(options?.transforms)
+// vue-es2015-compiler substitution:
+const transpile = renderCompiler
 
-  if (compileRenderMode) {
-    ret = compileRenderCode(source, options)
-  } else {
-    ret = compileTemplateCode(source, options)
-  }
+// enhance vue-template-compiler with babel:
+extendTemplateCompiler(transpile)
 
-  return ret
-}
+module.exports = transpile
