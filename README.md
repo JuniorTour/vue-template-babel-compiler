@@ -32,20 +32,10 @@ npm install --save-dev vue-template-babel-compiler
 yarn add vue-template-babel-compiler --dev
 
 # 2: Run a script to substitute vue-template-es2015-compiler with this repo (To be simplified)
-sh ./node_modules/vue-template-babel-compiler/updateVueTemplateBabelCompiler.sh
+sh ./node_modules/vue-template-babel-compiler/useVueTemplateBabelCompiler.sh
 
 # 3. Enjoy~
 ```
 
-## TODO
 
-- [x] Support `__staticRenderFns__`
-- [ ] More new ES features in SFC <template>
-- [ ] Customize options for babel and globals in SFC <template>
-- [x] publish [NPM package](https://www.npmjs.com/package/vue-template-babel-compiler)
-- [ ] More Usage
-- [ ] PR to [vue-template-es2015-compiler official repo](https://github.com/vuejs/vue-template-es2015-compiler)
-  - [ ] Then we can use this simpler without run
-
-
-### Welcome for issue, PR.
+### Welcome for Issues && PR.
