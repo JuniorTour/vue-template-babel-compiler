@@ -5,8 +5,15 @@ import {escapeRegExp} from "./utils/string"
 const babel = require('@babel/core')
 
 const matchWithRegex = new RegExp(escapeRegExp(`/*${WithStatementReplaceComment}*/`), 'g')
+const withReplacement = 'var _vm=this;\n  var _h=_vm.$createElement;\n  var _c=_vm._self._c||_h;\n'
+const functionalWithReplacement = 'var _c=_vm._c;\n'
 
-export function renderCompiler(code) {
+export function renderCompiler(code, options) {
+  // TODO add customize individual options
+  const fileNameHasFunctional = options?.filename
+    ?.includes(options?.functionalComponentFileIdentifier || '.functional')
+  const isFunctional = fileNameHasFunctional || options?.transforms?.stripWithFunctional
+
   const output = babel.transformSync(code, {
     filename: 'compiledTemplate',
     // not enable strict mode, in order to parse WithStatement
@@ -23,5 +30,5 @@ export function renderCompiler(code) {
     ],
   })
 
-  return output.code.replace(matchWithRegex, 'var _vm=this;\n  var _h=_vm.$createElement;\n  var _c=_vm._self._c||_h;\n')
+  return output.code.replace(matchWithRegex, isFunctional ? functionalWithReplacement : withReplacement)
 }

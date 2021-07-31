@@ -41,7 +41,7 @@ export function compileTemplate(source, options) {
     code += `var staticRenderFns = [${staticRenderFns.map((render) => toFunction(render, isFunctional))}]`
   }
 
-  const [compiledRender, compiledStaticRenders] = renderCompiler(code).split(renderSeparator)
+  const [compiledRender, compiledStaticRenders] = renderCompiler(code, options).split(renderSeparator)
 
   return {
     ast,

@@ -18,7 +18,6 @@ test('template compile should work', () => {
   expect(errors.length === 0).toBeTruthy()
 })
 
-
 test('should extend template compile', () => {
   const functionType = 'function'
   expect(typeof transpile).toMatch(functionType)
@@ -29,3 +28,27 @@ test('should extend template compile', () => {
   expect(typeof transpile.ssrCompileToFunctions).toMatch(functionType)
   expect(typeof transpile.generateCodeFrame).toMatch(functionType)
 })
+
+// TODO functional component case
+// test('should work for functional component', () => {
+//   const options = {
+//     transforms: {
+//       stripWithFunctional: true
+//     }
+//   }
+//   const msg = 'Hello vue-template-babel-compiler'
+//   const {
+//     ast,
+//     render,
+//     staticRenderFns,
+//     tips,
+//     errors
+//   } = transpile.compile(`<div>${msg}</div>`, options)
+//
+//   const vm = new Vue({
+//     render: toFunction(render)
+//   }).$mount()
+//
+//   expect(vm.$el.innerHTML).toMatch(msg)
+//   expect(errors.length === 0).toBeTruthy()
+// })
