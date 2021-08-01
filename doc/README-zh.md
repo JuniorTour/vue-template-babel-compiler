@@ -1,5 +1,5 @@
 # vue-template-babel-compiler
-Enable `Optional Chaining(?.)`, `Nullish Coalescing(??)` and many new ES syntax for [Vue.js SFC](https://vuejs.org/v2/guide/single-file-components.html) based on [Babel](https://babeljs.io/).
+使用 [Babel](https://babeljs.io/) 为 [Vue.js SFC](https://vuejs.org/v2/guide/single-file-components.html) 启用 `Optional Chaining(?.)`, `Nullish Coalescing(??)` 等诸多 ES 新语法。
 
 <p align="center">
   <a href="https://www.npmjs.com/package/vue-template-babel-compiler">
@@ -18,17 +18,17 @@ Enable `Optional Chaining(?.)`, `Nullish Coalescing(??)` and many new ES syntax 
 ![DEMO](https://user-images.githubusercontent.com/14243906/127761300-076db45a-cdce-4fda-bd02-1f4fa96de6d8.png)
 
 ## Features
-- All features of [vue-template-compiler](https://github.com/vuejs/vue/tree/dev/packages/vue-template-compiler#readme) && [vue-template-es2015-compiler](https://github.com/vuejs/vue-template-es2015-compiler)
-- new ES syntax: `Optional Chaining`, `Bigint`, `Nullish Coalescing` and more
-- Customization syntax, babel plugin...
+- [vue-template-compiler](https://github.com/vuejs/vue/tree/dev/packages/vue-template-compiler#readme) && [vue-template-es2015-compiler](https://github.com/vuejs/vue-template-es2015-compiler) 的所有功能
+- 新语法: `Optional Chaining`, `Bigint`, `nullish coalescing` and more
+- 自定义语法、babel 插件等等...
 
-## Usage
-### 1. Install
+## 用法
+### 1. 安装
 ``` bash
 npm install --save-dev vue-template-babel-compiler
 ```
 
-### 2. Config
+### 2. 配置
 #### 1. [vue-cli](https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader)
 ``` js
 // vue.config.js
@@ -56,4 +56,4 @@ module.exports = {
 ```
 
 
-### Welcome for Issues && PR.
+### 欢迎 Issues && PR.
