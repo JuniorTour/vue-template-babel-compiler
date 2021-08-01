@@ -25,11 +25,12 @@ Enable `Optional Chaining(?.)`, `Nullish Coalescing(??)` and many new ES syntax 
 ## Usage
 ### 1. Install
 ``` bash
-npm install --save-dev vue-template-babel-compiler
+npm install vue-template-babel-compiler --save-dev
 ```
 
 ### 2. Config
-#### 1. [vue-cli](https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader)
+#### 1. [Vue-CLI](https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader)
+[DEMO project for Vue-CLI](https://github.com/JuniorTour/vue-template-babel-compiler-vue-cli-project)
 ``` js
 // vue.config.js
 module.exports = {
@@ -45,15 +46,40 @@ module.exports = {
 }
 ```
 
-#### 2. [nuxt.js](https://nuxtjs.org/docs/2.x/features/configuration#extend-webpack-to-load-audio-files)
+#### 2. [Nuxt.js](https://nuxtjs.org/docs/2.x/features/configuration#extend-webpack-to-load-audio-files)
+[DEMO project for Nuxt.js](https://github.com/JuniorTour/vue-template-babel-compiler-nuxt-project)
 ``` js
 // nuxt.config.js
+export default {
+  // Build Configuration: https://go.nuxtjs.dev/config-build
+  build: {
+    loaders: {
+      vue: {
+        compiler: require('vue-template-babel-compiler')
+      }
+    },
+  },
+  // ...
+}
 ```
 
-#### 3. [webpack](https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader)
+#### 3. [Webpack](https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader)
 ``` js
-// your webpack.config.js which config vue-loader
+// your webpack.config.js where config vue-loader
+module.exports = {
+  // ...
+  module: {
+    rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: {
+            compiler: require('vue-template-babel-compiler')
+        }
+      }
+    ]
+  }
+}
 ```
-
 
 ### Welcome for Issues && PR.
