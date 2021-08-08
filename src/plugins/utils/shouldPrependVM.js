@@ -3,7 +3,23 @@ Interpret Bubble's logic:
 https://github.com/yyx990803/buble/blob/f5996c9cdb2e61cb7dddf0f6c6f25d0f3f600055/src/utils/prependVm.js
 */
 import globals from '../constants/globals'
-const t = require('@babel/types');
+const t = require('@babel/types')
+
+function inScope(scope, nodeName) {
+  if (!scope || !scope.bindings) return false
+
+  let ret = false
+  let cur = scope
+  while (cur) {
+    ret = cur.bindings[nodeName]
+    if (cur === scope.parent || ret) {
+      break
+    }
+    cur = scope.parent
+  }
+
+  return ret
+}
 
 export function shouldPrependVmNew(path) {
   const parent = path.parent
@@ -33,7 +49,7 @@ export function shouldPrependVmNew(path) {
     // not cur function param
     && !scope?.block.params?.find(node => node.name === nodeName)
     // not already in scope
-    && !scope.bindings[nodeName]
+    && !inScope(scope, nodeName)
   ) {
     return true
   }
