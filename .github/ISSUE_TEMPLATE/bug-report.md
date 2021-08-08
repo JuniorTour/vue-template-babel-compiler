@@ -1,8 +1,8 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-title: "[Bug]"
-labels: ''
+title: "[Bug] Please describe your issue"
+labels: need triage
 assignees: ''
 
 ---
@@ -17,13 +17,7 @@ assignees: ''
 ## Expected behavior
 
 
-## Configuration
+## Usage
 
 
-## Environment
-
-
-## Possible solution
-
-
-## Additional context
+## Extra
