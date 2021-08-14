@@ -4,13 +4,18 @@ Enable `Optional Chaining(?.)`, `Nullish Coalescing(??)` and many new ES syntax 
 <p align="center">
   <a href="https://www.npmjs.com/package/vue-template-babel-compiler">
     <img
+    src="https://img.shields.io/npm/dt/vue-template-babel-compiler"
+    alt="Downloads">
+  </a>
+  <a href="https://www.npmjs.com/package/vue-template-babel-compiler">
+    <img
     src="https://img.shields.io/npm/v/vue-template-babel-compiler.svg?sanitize=true"
     alt="Version">
   </a>
   <a href="https://github.com/JuniorTour/vue-template-babel-compiler">
     <img
     src="https://img.shields.io/github/last-commit/JuniorTour/vue-template-babel-compiler?sanitize=true"
-    alt="last-commit">
+    alt="LastCommit">
   </a>
 </p>
 
