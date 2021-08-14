@@ -31,8 +31,8 @@ export function shouldPrependVmNew(path) {
     // not function parameter destructuring
     scope.path?.listKey !== 'params'
     // not a id of a Declaration:
-    && !t.isVariableDeclarator(parent)
-    // not a params of a function
+    && !(t.isVariableDeclarator(parent) && parent.id === node)
+    // not a param of a function
     && !(t.isFunctionExpression(parent) && parent.params.indexOf(node) > -1)
     // not a property of OptionalMemberExpression
     && !(t.isOptionalMemberExpression(parent) && parent.property === node)
