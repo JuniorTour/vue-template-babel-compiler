@@ -172,3 +172,25 @@ test('should work for nullish coalescing', () => {
 
   expect(vm.$el.innerHTML).toMatch(`nullish coalescing`)
 })
+
+test('variableDeclarator init should append vm', () => {
+  // v-model target value should not throw 'not defined' error
+  // Src: https://github.com/JuniorTour/vue-template-babel-compiler/issues/5
+  const vm = new Vue({
+    ...compileAsFunctions(`
+    <div>
+        <input type="checkbox"
+               value="1"
+               v-model="checkboxVal">
+    </div>
+    `),
+    data: {
+      checkboxVal: true,
+    }
+  }).$mount()
+
+  expect(() => {
+    const checkboxEl = vm.$el.querySelector('input')
+    checkboxEl.click()
+  }).not.toThrow()
+})
