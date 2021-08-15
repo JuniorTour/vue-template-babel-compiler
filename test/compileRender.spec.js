@@ -194,3 +194,53 @@ test('variableDeclarator init should append vm', () => {
     checkboxEl.click()
   }).not.toThrow()
 })
+
+test('not already in scoped slot should work', () => {
+  // argument should not be undefined in function invoke of scoped slot
+  // Src: https://github.com/JuniorTour/vue-template-babel-compiler/issues/2
+  const dataMsg = 'dataMsg'
+  let scopedSlotContext
+  const vm = new Vue({
+    ...compileAsFunctions(`
+    <scopeSlot>
+      <template v-slot:default="{dataMsg}">
+        <span @click="greet(dataMsg)">
+          v-slot:content worked
+        </span>
+      </template>
+    </scopeSlot>
+    `),
+    components: {
+      scopeSlot: {
+        ...compileAsFunctions(`
+          <div>
+            <h4>
+              <slot v-bind:dataMsg="dataMsg">
+                  content
+              </slot>
+            </h4>
+          </div>
+          `),
+        data() {
+          return {
+            dataMsg,
+          }
+        }
+      },
+    },
+    data: {
+      checkboxVal: true,
+    },
+    methods: {
+      greet(dataMsg) {
+        scopedSlotContext = dataMsg
+      },
+    },
+  }).$mount()
+
+  expect(() => {
+    const checkboxEl = vm.$el.querySelector('span')
+    checkboxEl.click()
+  }).not.toThrow()
+  expect(scopedSlotContext).toMatch(dataMsg)
+})
