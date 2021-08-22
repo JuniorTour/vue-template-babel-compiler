@@ -15,7 +15,7 @@
   "scripts": {
     "build": "rollup -c rollup.config.js",
     "test": " npm run build && jest",
-    "inspect": "npm run build && node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand",
+    "debugTest": "npm run build && node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand",
     "prepublishOnly": "jest && npm run build"
   },
   "jest": {
