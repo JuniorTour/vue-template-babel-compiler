@@ -87,4 +87,7 @@ module.exports = {
 }
 ```
 
+## [API](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/API.md)
+
+
 ### Welcome for Issues && PR.
