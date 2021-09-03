@@ -27,6 +27,9 @@ test('should extend template compile', () => {
   expect(typeof templateCompiler.ssrCompile).toMatch(functionType)
   expect(typeof templateCompiler.ssrCompileToFunctions).toMatch(functionType)
   expect(typeof templateCompiler.generateCodeFrame).toMatch(functionType)
+
+  // use same compiler for ssr and non-ssr, fix: https://github.com/JuniorTour/vue-template-babel-compiler/issues/7
+  expect(templateCompiler.ssrCompile).toEqual(templateCompiler.compile)
 })
 
 test('should work for functional component', () => {

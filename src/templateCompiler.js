@@ -57,5 +57,6 @@ export function extendTemplateCompiler(obj) {
   for (const key in templateCompiler) {
     obj[key] = templateCompiler[key]
   }
+  obj.ssrCompile = compileTemplate
   obj.compile = compileTemplate
 }
