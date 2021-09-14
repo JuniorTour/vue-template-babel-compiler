@@ -29,6 +29,7 @@ test('should work', () => {
     ...compileAsFunctions(`
       <div>
         <div>{{ foo }}</div>
+        <div>{{ a[foo] }}</div>
         <div v-for="{ name } in items">{{ name }}</div>
         <div v-bind="{ ...a, ...b }"/>
       </div>
@@ -39,15 +40,16 @@ test('should work', () => {
         {name: 'foo'},
         {name: 'bar'}
       ],
-      a: {id: 'foo'},
+      a: {hello: 'foo'},
       b: {class: 'bar'}
     }
   }).$mount()
 
   expect(vm.$el.innerHTML).toMatch(
     `<div>hello</div> ` +
+    `<div>foo</div> ` +
     `<div>foo</div><div>bar</div> ` +
-    `<div id="foo" class="bar"></div>`
+    `<div hello="foo" class="bar"></div>`
   )
 })
 
