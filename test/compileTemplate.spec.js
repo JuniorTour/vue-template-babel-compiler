@@ -41,3 +41,13 @@ test('should work for functional component', () => {
 
   expect(render).toMatch('var _c=_vm._c')
 })
+
+test('should use object.assign for object rest spread', () => {
+  // https://github.com/JuniorTour/vue-template-babel-compiler/issues/9
+  const {ast, render, staticRenderFns, tips, errors} = templateCompiler.compile(`
+    <h3 v-if="{...a}">object rest spread</h3>
+`)
+
+  expect(errors.length === 0).toBeTruthy()
+  expect(render).toMatch(`Object.assign({}, _vm.a) ? _c('h3', [_vm._v("object rest spread")]) : _vm._e()`)
+})
