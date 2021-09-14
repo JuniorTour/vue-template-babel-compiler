@@ -51,3 +51,13 @@ test('should use object.assign for object rest spread', () => {
   expect(errors.length === 0).toBeTruthy()
   expect(render).toMatch(`Object.assign({}, _vm.a) ? _c('h3', [_vm._v("object rest spread")]) : _vm._e()`)
 })
+
+test('should use simple assign for computed properties', () => {
+  // https://github.com/JuniorTour/vue-template-babel-compiler/issues/13
+  const {ast, render, staticRenderFns, tips, errors} = templateCompiler.compile(
+    '<div :class="{[`${foo}_bar`]: true}"></div>'
+  )
+
+  expect(errors.length === 0).toBeTruthy()
+  expect(render).toMatch('class: (_class = {}, _class[`${_vm.foo}_bar`] = true, _class)')
+})

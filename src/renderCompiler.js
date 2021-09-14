@@ -16,7 +16,11 @@ export function renderCompiler(code, options) {
     filename: 'compiledTemplate',
     // not enable strict mode, in order to parse WithStatement
     sourceType: 'script',
+    assumptions: {
+      setComputedProperties: true
+    },
     plugins: [
+      '@babel/plugin-transform-computed-properties',
       '@babel/plugin-proposal-nullish-coalescing-operator',
       '@babel/plugin-proposal-optional-chaining',
       '@babel/plugin-transform-block-scoping',
