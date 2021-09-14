@@ -39,7 +39,7 @@ export function shouldPrependVmNew(path) {
     // not a key of Property
     && !(t.isObjectProperty(parent) && parent.key === node)
     // not a property of a MemberExpression
-    && !(t.isMemberExpression(parent) && parent.property === node)
+    && !(t.isMemberExpression(parent) && parent.property === node && !parent.computed)
     // not in an Array destructure pattern
     && !t.isArrayPattern(parent)
     // not in an Object destructure pattern
