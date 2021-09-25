@@ -68,26 +68,12 @@ export default {
 }
 ```
 
-#### 3. [Webpack](https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader)
-``` js
-// your webpack.config.js where config vue-loader
-module.exports = {
-  // ...
-  module: {
-    rules: [
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-            compiler: require('vue-template-babel-compiler')
-        }
-      }
-    ]
-  }
-}
-```
+## [Usage Detail Doc](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/Usage.md)
+- [vue-jest Usage](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/Usage.md#vue-jest)
+- [Webpack Usage](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/Usage.md#Webpack)
+- [Functional Component Usage](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/Usage.md#Functional-Component-Usage)
 
-## [API](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/API.md)
+## [API Doc](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/API.md)
 
 
 ### Welcome for Issues && PR.

@@ -1,5 +1,5 @@
 # vue-template-babel-compiler
-使用 [Babel](https://babeljs.io/) 为 [Vue.js SFC](https://vuejs.org/v2/guide/single-file-components.html) 启用 `Optional Chaining(?.)`, `Nullish Coalescing(??)` 等诸多 ES 新语法。
+使用 [Babel](https://babeljs.io/) 为 [Vue.js SFC](https://vuejs.org/v2/guide/single-file-components.html) 启用 `可选链(?.)`, `空值合并(??)` 等诸多 ES 新语法。
 
 <p align="center">
   <a href="https://www.npmjs.com/package/vue-template-babel-compiler">
