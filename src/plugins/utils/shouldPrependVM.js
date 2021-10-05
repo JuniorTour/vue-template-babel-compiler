@@ -10,12 +10,9 @@ function inScope(scope, nodeName) {
 
   let ret = false
   let cur = scope
-  while (cur) {
+  while (cur && !ret) {
     ret = cur.bindings[nodeName]
-    if (cur === scope.parent || ret) {
-      break
-    }
-    cur = scope.parent
+    cur = cur.parent
   }
 
   return ret
