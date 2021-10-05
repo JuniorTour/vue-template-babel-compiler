@@ -53,6 +53,5 @@
     "vue-template",
     "vue-template-babel"
   ],
-  "repository": "https://github.com/JuniorTour/vue-template-babel-compiler",
-  "packageManager": "yarn@3.0.2"
+  "repository": "https://github.com/JuniorTour/vue-template-babel-compiler"
 }
