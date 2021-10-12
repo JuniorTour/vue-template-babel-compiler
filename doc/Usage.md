@@ -1,11 +1,12 @@
 # Usage
 
 ##### Table of Contents
-- [Usage Detail](#Usage Detail)
-  - [vue-jest Usage](#vue-jest)
-  - [Webpack Usage](#Webpack)
+- [Usage Detail](#Usage-Detail)
+  - [vue-jest Usage](#1-vue-jest)
+  - [Webpack Usage](#2-Webpack)
 - [Caveats](#Caveats)
-  - [Functional Component Usage](##Functional-Component-Usage)
+  - [Functional Component Usage](#1-Functional-Component-Usage)
+  - [Only Substitute `vue-template-es2015-compiler`](#2-Only-Substitute-vue-templat-es2015-compiler)
 
 ## Usage Detail
 
@@ -76,3 +77,18 @@ You can customize the mark by `functionalComponentFileIdentifier` option :
 ```
 
 See [issue#10](https://github.com/JuniorTour/vue-template-babel-compiler/issues/10) for detail and feedback.
+
+
+### 2. Only Substitute `vue-template-es2015-compiler`
+
+This lib can be used to replace [vue-template-es2015-compiler](https://github.com/vuejs/vue-template-es2015-compiler) only.
+
+Please refer to: [API Doc: transpile(renderSourceCode: String, options: Object): String](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/API.md#transpilerendersourcecode-string-options-object-string)
+
+eg:
+```shell script
+#!/bin/sh
+mv node_modules/vue-template-es2015-compiler node_modules/vue-template-es2015-compiler-deprecated
+mv node_modules/vue-template-babel-compiler node_modules/vue-template-es2015-compiler
+echo 'Use vue-template-babel-compiler Success!'
+```

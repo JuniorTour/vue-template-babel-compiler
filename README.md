@@ -1,4 +1,5 @@
-# vue-template-babel-compiler
+# vue-template-babel-compiler &middot; [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/JuniorTour/vue-template-babel-compiler) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/CONTRIBUTING.md)
+
 Enable `Optional Chaining(?.)`, `Nullish Coalescing(??)` and many new ES syntax for [Vue.js SFC](https://vuejs.org/v2/guide/single-file-components.html) based on [Babel](https://babeljs.io/).
 
 <p align="center">
@@ -6,6 +7,11 @@ Enable `Optional Chaining(?.)`, `Nullish Coalescing(??)` and many new ES syntax 
     <img
     src="https://img.shields.io/npm/dt/vue-template-babel-compiler"
     alt="Downloads">
+  </a>
+  <a href="https://www.npmjs.com/package/vue-template-babel-compiler">
+    <img
+    src="https://img.shields.io/github/size/JuniorTour/vue-template-babel-compiler/lib/index.js"
+    alt="Size">
   </a>
   <a href="https://www.npmjs.com/package/vue-template-babel-compiler">
     <img
@@ -69,9 +75,9 @@ export default {
 ```
 
 ## [Usage Detail Doc](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/Usage.md)
-- [vue-jest Usage](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/Usage.md#vue-jest)
-- [Webpack Usage](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/Usage.md#Webpack)
-- [Functional Component Usage](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/Usage.md#Functional-Component-Usage)
+- [vue-jest Usage](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/Usage.md#1-vue-jest)
+- [Webpack Usage](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/Usage.md#2-webpack)
+- [Functional Component Usage](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/Usage.md#1-functional-component-usage)
 
 ## [API Doc](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/API.md)
 
