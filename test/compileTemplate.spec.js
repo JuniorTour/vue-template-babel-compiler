@@ -61,3 +61,35 @@ test('should use simple assign for computed properties', () => {
   expect(errors.length === 0).toBeTruthy()
   expect(render).toMatch('class: (_class = {}, _class[`${_vm.foo}_bar`] = true, _class)')
 })
+
+test('should traverse scope to judge shouldPrependVm', () => {
+  // https://github.com/JuniorTour/vue-template-babel-compiler/issues/16
+  const {ast, render, staticRenderFns, tips, errors} = templateCompiler.compile(`
+  <div>
+    <div v-for="actionKey in actionKeys">
+      <input type="checkbox" v-model="enabled[actionKey]" />
+    </div>
+  </div>`)
+
+  const vm = new Vue({
+    render: toFunction(render),
+    data() {
+      return {
+        actionKeys: ['1','2','3'],
+        enabled: {
+          1: true,
+          2: true,
+          3: true,
+        },
+      }
+    }
+  }).$mount()
+
+  expect(errors.length === 0).toBeTruthy()
+  expect(vm.$el.innerHTML).toMatch('<input type="checkbox"')
+  expect(() => {
+    const checkboxEl = vm.$el.querySelector('input')
+    checkboxEl.click()
+  }).not.toThrow()
+  expect(vm.$data.enabled[1]).toBeFalsy()
+})
