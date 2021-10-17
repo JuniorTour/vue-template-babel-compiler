@@ -18,7 +18,7 @@ function inScope(scope, nodeName) {
   return ret
 }
 
-export function shouldPrependVmNew(path) {
+export function shouldPrependVm(path) {
   const parent = path.parent
   const node = path.node
   const nodeName = node.name
