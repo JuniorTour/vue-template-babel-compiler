@@ -1,11 +1,11 @@
-import {shouldPrependVmNew} from "./utils/shouldPrependVM";
+import {shouldPrependVm} from "./utils/shouldPrependVM";
 import {vueModelName, WithStatementReplaceComment} from "./constants/preservedNames";
 
 const t = require('@babel/types');
 
 const nestedVisitor = {
   Identifier(path) {
-    if (shouldPrependVmNew(path)) {
+    if (shouldPrependVm(path)) {
       path.replaceWith(t.memberExpression(t.identifier(vueModelName), path.node))
     }
   }
