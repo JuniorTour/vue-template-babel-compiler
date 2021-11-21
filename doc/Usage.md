@@ -4,6 +4,7 @@
 - [Usage Detail](#Usage-Detail)
   - [vue-jest Usage](#1-vue-jest)
   - [Webpack Usage](#2-Webpack)
+  - [VueUse && `<script setup>`](#3-vueuse)
 - [Caveats](#Caveats)
   - [Functional Component Usage](#1-Functional-Component-Usage)
   - [Only Substitute `vue-template-es2015-compiler`](#2-Only-Substitute-vue-templat-es2015-compiler)
@@ -56,6 +57,11 @@ module.exports = {
   }
 }
 ```
+
+
+#### 3. [VueUse && `<script setup>`](https://github.com/JuniorTour/vue-template-babel-compiler-VueUse-Example)
+
+Example Project: https://github.com/JuniorTour/vue-template-babel-compiler-VueUse-Example
 
 
 ## Caveats
