@@ -246,3 +246,16 @@ test('not already in scoped slot should work', () => {
   }).not.toThrow()
   expect(scopedSlotContext).toMatch(dataMsg)
 })
+
+// https://github.com/JuniorTour/vue-template-babel-compiler/issues/25
+test('spread should allowArrayLike ', () => {
+  // Node.js don't have document API
+  // So we use `{length: 1}` to simulate Array-Like
+  const vm = new Vue({
+    ...compileAsFunctions(`
+      <div>{{ [...{length: 1}].length }}</div>
+    `),
+  }).$mount()
+
+  expect(vm.$el.innerHTML).toMatch('1')
+})

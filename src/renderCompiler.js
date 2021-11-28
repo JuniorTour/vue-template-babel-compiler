@@ -17,7 +17,8 @@ export function renderCompiler(code, options) {
     // not enable strict mode, in order to parse WithStatement
     sourceType: 'script',
     assumptions: {
-      setComputedProperties: true
+      setComputedProperties: true,
+      arrayLikeIsIterable: true,
     },
     plugins: [
       '@babel/plugin-transform-computed-properties',
