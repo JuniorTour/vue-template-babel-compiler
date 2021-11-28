@@ -1,3 +1,5 @@
+name: 'PublishLatestVersion'
+
 on:
   push:
     tags:
