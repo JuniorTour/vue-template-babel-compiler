@@ -140,6 +140,24 @@ test('should work for optional chaining', () => {
   expect(vm.$el.innerHTML).toMatch(`<h1>optional chaining worked</h1>`)
 })
 
+test('should work for computed property accessing in optional chaining', () => {
+  const vm = new Vue({
+    ...compileAsFunctions(`
+      <div>
+        <h1 v-if="optional?.[key]">optional chaining worked</h1>
+      </div>
+    `),
+    data: {
+      optional: {
+        chaining: true
+      },
+      key: 'chaining'
+    }
+  }).$mount()
+
+  expect(vm.$el.innerHTML).toMatch(`<h1>optional chaining worked</h1>`)
+})
+
 test('should work for __staticRenderFns__', () => {
   const transpileResult = transpileWithOption(`
 var __render__ = function () {with (this) {return _m(0)}}
