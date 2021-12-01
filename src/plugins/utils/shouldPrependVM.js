@@ -32,7 +32,7 @@ export function shouldPrependVm(path) {
     // not a param of a function
     && !(t.isFunctionExpression(parent) && parent.params.indexOf(node) > -1)
     // not a property of OptionalMemberExpression
-    && !(t.isOptionalMemberExpression(parent) && parent.property === node)
+    && !(t.isOptionalMemberExpression(parent) && parent.property === node && !parent.computed)
     // not a key of Property
     && !(t.isObjectProperty(parent) && parent.key === node)
     // not a property of a MemberExpression
