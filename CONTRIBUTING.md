@@ -9,11 +9,11 @@
     + [C. Use Chrome DevTool to debug this lib as usual](#c-use-chrome-devtool-to-debug-this-lib-as-usual)
   * [4. Find a solution](#4-find-a-solution)
   * [5. Fork this Repo and setup](#5-fork-this-repo-and-setup)
-  * [6. Add test case and run `yarn test`](#6-add-test-case-and-run--yarn-test-)
-    + [Write test case is Easy!](#write-test-case-is-easy-)
-      - [A. find a `*.spec.js` file to write](#a-find-a---specjs--file-to-write)
-      - [B. Copy the reproduce code snippet above with `jest API`](#b-copy-the-reproduce-code-snippet-above-with--jest-api-)
-      - [C. Run `yarn test`](#c-run--yarn-test-)
+  * [6. Add test case and run `yarn test`](#6-add-test-case-and-run-yarn-test)
+    + [Write test case is Easy!](#write-test-case-is-easy)
+      - [A. find a `*.spec.js` file to write](#a-find-a-specjs-file-to-write)
+      - [B. Copy the reproduce code snippet above with `jest API`](#b-copy-the-reproduce-code-snippet-above-with-jest-api)
+      - [C. Run `yarn test`](#c-run-yarn-test)
   * [7. Git commit and Push](#7-git-commit-and-push)
 
 
@@ -186,9 +186,9 @@ This means your code doesn't break anything :)
 
 ## 7. Git commit and Push
 
-Finally, commit your changes like [this commit](https://github.com/JuniorTour/vue-template-babel-compiler/commit/b5e8bd13e603bfb1b9dd87f1222b831fd2a68c49#) and `git push`.
+Finally, commit your changes like [fix: use simple assign for computed properties (fix #13)](https://github.com/JuniorTour/vue-template-babel-compiler/commit/b5e8bd13e603bfb1b9dd87f1222b831fd2a68c49#) and `git push`.
 
-> Don't forget Follow the [commit convention](https://www.conventionalcommits.org/en/v1.0.0/).
+> Don't forget Follow the [commit convention](https://www.conventionalcommits.org/en/v1.0.0/): `#{fix || chore || feat: xxx (fix #13)}`
 
 > yarn.lock, package.json changes should be kept.
 
