@@ -41,7 +41,7 @@ npm install vue-template-babel-compiler --save-dev
 
 ### 2. Config
 #### 1. [Vue-CLI](https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader)
-[DEMO project for Vue-CLI](https://github.com/JuniorTour/vue-template-babel-compiler-vue-cli-project)
+[Example project for Vue-CLI](https://github.com/JuniorTour/vue-template-babel-compiler-vue-cli-project)
 ``` js
 // vue.config.js
 module.exports = {
@@ -58,7 +58,7 @@ module.exports = {
 ```
 
 #### 2. [Nuxt.js](https://nuxtjs.org/docs/2.x/features/configuration#extend-webpack-to-load-audio-files)
-[DEMO project for Nuxt.js](https://github.com/JuniorTour/vue-template-babel-compiler-nuxt-project)
+[Example project for Nuxt.js](https://github.com/JuniorTour/vue-template-babel-compiler-nuxt-project)
 ``` js
 // nuxt.config.js
 export default {
@@ -74,13 +74,13 @@ export default {
 }
 ```
 
-## [Usage Detail Doc](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/Usage.md)
+## [Doc](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/Usage.md)
 - [vue-jest Usage](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/Usage.md#1-vue-jest)
 - [Webpack Usage](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/Usage.md#2-webpack)
-- [VueUse && `<script setup>`](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/Usage.md#3-vueuse)
+- [VueUse && `<script setup>` Usage](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/Usage.md#3-vueuse)
 - [Functional Component Usage](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/Usage.md#1-functional-component-usage)
 
-## [API Doc](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/API.md)
+## [API](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/API.md)
 
 
 ### Welcome for Issues && PR.
