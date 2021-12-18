@@ -8,6 +8,7 @@
 - [Caveats](#Caveats)
   - [Functional Component Usage](#1-Functional-Component-Usage)
   - [Only Substitute `vue-template-es2015-compiler`](#2-Only-Substitute-vue-templat-es2015-compiler)
+  - [Prevent been compiled by other babel config](#3-Prevent-been-compiled-by-other-babel-config)
 
 ## Usage Detail
 
@@ -98,3 +99,24 @@ mv node_modules/vue-template-es2015-compiler node_modules/vue-template-es2015-co
 mv node_modules/vue-template-babel-compiler node_modules/vue-template-es2015-compiler
 echo 'Use vue-template-babel-compiler Success!'
 ```
+
+### 3. Prevent been compiled by other babel config
+
+Sometimes, we want the Vue `<template>` only compiled by this compiler's config, not babel config from others.
+
+For example: [Issue #13: call typeof error](https://github.com/JuniorTour/vue-template-babel-compiler/issues/23).
+
+In this scenario, we need prevent this compiler uses [babel config chain](https://github.com/babel/babel/blob/b2d9156cc62d37f4c522c9505a00f50b99a1eb74/packages/babel-core/src/config/partial.ts#L139), and don't compile `typeof` keyword by `@babel/plugin-transform-typeof-symbol` from `@vue/cli-plugin-babel/preset`.
+
+So we can `exclude` vue template from babel config:
+``` js
+// babel.config.js
+module.exports = {
+  presets: [
+    '@vue/cli-plugin-babel/preset'
+  ],
+  exclude: 'VueTemplateBabelCompiler'
+}
+```
+
+After this config, this compiler will not use `@vue/cli-plugin-babel/preset` to compile Vue `<template>`, then the `typeof` keyword will not run into error.

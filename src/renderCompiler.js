@@ -13,7 +13,7 @@ export function renderCompiler(code, options) {
   const isFunctional = options?.transforms?.stripWithFunctional
 
   const output = babel.transformSync(code, {
-    filename: 'compiledTemplate',
+    filename: 'VueTemplateBabelCompiler',
     // not enable strict mode, in order to parse WithStatement
     sourceType: 'script',
     assumptions: {
