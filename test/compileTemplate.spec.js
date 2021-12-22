@@ -93,3 +93,26 @@ test('should traverse scope to judge shouldPrependVm', () => {
   }).not.toThrow()
   expect(vm.$data.enabled[1]).toBeFalsy()
 })
+
+test('should prepend vm to computed property', () => {
+  // https://github.com/JuniorTour/vue-template-babel-compiler/issues/28
+  const {ast, render, staticRenderFns, tips, errors} = templateCompiler.compile(`
+  <div>
+    <div :class="{
+        [class1]: condition1
+    }"></div>
+  </div>`)
+
+  const vm = new Vue({
+    render: toFunction(render),
+    data() {
+      return {
+        class1: 'firstClass',
+        condition1: true,
+      }
+    }
+  }).$mount()
+
+  expect(errors.length === 0).toBeTruthy()
+  expect(vm.$el.innerHTML).toMatch('<div class="firstClass"')
+})

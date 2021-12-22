@@ -34,7 +34,7 @@ export function shouldPrependVm(path) {
     // not a property of OptionalMemberExpression
     && !(t.isOptionalMemberExpression(parent) && parent.property === node && !parent.computed)
     // not a key of Property
-    && !(t.isObjectProperty(parent) && parent.key === node)
+    && !(t.isObjectProperty(parent) && parent.key === node && !parent.computed)
     // not a property of a MemberExpression
     && !(t.isMemberExpression(parent) && parent.property === node && !parent.computed)
     // not in an Array destructure pattern
