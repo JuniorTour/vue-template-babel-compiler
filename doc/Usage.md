@@ -5,6 +5,8 @@
   - [vue-jest Usage](#1-vue-jest)
   - [Webpack Usage](#2-Webpack)
   - [VueUse && `<script setup>`](#3-vueuse--script-setup)
+- [Options](#Options)
+  - [babel options customization](#1-babel-options-customization)
 - [Caveats](#Caveats)
   - [Functional Component Usage](#1-Functional-Component-Usage)
   - [Only Substitute `vue-template-es2015-compiler`](#2-only-substitute-vue-template-es2015-compiler)
@@ -63,6 +65,54 @@ module.exports = {
 #### 3. [VueUse && `<script setup>`](https://github.com/JuniorTour/vue-template-babel-compiler-VueUse-Example)
 
 Example Project: https://github.com/JuniorTour/vue-template-babel-compiler-VueUse-Example
+
+## Options
+
+### 1. babel options customization
+
+We can customize babel options for this compiler by `babelOptions` property:
+```js
+// vue.config.js
+module.exports = {
+    chainWebpack: config => {
+        config.module
+            .rule('vue')
+            .use('vue-loader')
+            .tap(options => {
+                options.babelOptions = {
+                    filename: 'newFilename',
+                    newProp: true,
+                    assumptions: {
+                      additional: 'additional'
+                    },
+                    plugins: [
+                      'newPlugin'
+                    ]
+                }
+                options.compiler = require('vue-template-babel-compiler')
+                return options
+            })
+    }
+}
+
+// nuxt.config.js
+export default {
+  // Build Configuration: https://go.nuxtjs.dev/config-build
+  build: {
+    loaders: {
+      vue: {
+        babelOptions: {
+            /* ... */
+        },
+        compiler: require('vue-template-babel-compiler')
+      }
+    },
+  },
+  // ...
+}
+```
+
+This `babelOptions` property will merge with [default options](https://github.com/JuniorTour/vue-template-babel-compiler/blob/b49006bbf3913230bc604203452404b011a443f0/src/renderCompiler.js#L15-L35)
 
 
 ## Caveats

@@ -31,7 +31,7 @@ Enable `Optional Chaining(?.)`, `Nullish Coalescing(??)` and many new ES syntax 
 ## Features
 - All features of [vue-template-compiler](https://github.com/vuejs/vue/tree/dev/packages/vue-template-compiler#readme) && [vue-template-es2015-compiler](https://github.com/vuejs/vue-template-es2015-compiler)
 - new ES syntax: `Optional Chaining`, `Bigint`, `Nullish Coalescing` and more
-- Customization syntax, babel options...
+- use babel to transpile vue render function, customization syntax, babel options customization
 
 ## Usage
 ### 1. Install
@@ -78,6 +78,7 @@ export default {
 - [vue-jest Usage](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/Usage.md#1-vue-jest)
 - [Webpack Usage](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/Usage.md#2-webpack)
 - [VueUse && `<script setup>` Usage](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/Usage.md#3-vueuse--script-setup)
+- [babel options customization](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/Usage.md#1-babel-options-customization)
 - [Functional Component Usage](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/Usage.md#1-functional-component-usage)
 
 ## [API](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/API.md)

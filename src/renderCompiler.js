@@ -1,6 +1,7 @@
 import parseWithStatementToVm from './plugins/parse-with-statement'
 import {WithStatementReplaceComment} from "./plugins/constants/preservedNames"
 import {escapeRegExp} from "./utils/string"
+import {mergeOptions} from "./utils/merge";
 
 const babel = require('@babel/core')
 
@@ -12,7 +13,7 @@ export function renderCompiler(code, options) {
   // TODO add customize individual options
   const isFunctional = options?.transforms?.stripWithFunctional
 
-  const output = babel.transformSync(code, {
+  const output = babel.transformSync(code, mergeOptions({
     filename: 'VueTemplateBabelCompiler',
     // not enable strict mode, in order to parse WithStatement
     sourceType: 'script',
@@ -32,7 +33,9 @@ export function renderCompiler(code, options) {
       '@babel/plugin-transform-parameters',
       parseWithStatementToVm,
     ],
-  })
+  },
+  options?.babelOptions || {})
+  )
 
   return output.code.replace(matchWithRegex, isFunctional ? functionalWithReplacement : withReplacement)
 }

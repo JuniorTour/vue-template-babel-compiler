@@ -116,3 +116,18 @@ test('should prepend vm to computed property', () => {
   expect(errors.length === 0).toBeTruthy()
   expect(vm.$el.innerHTML).toMatch('<div class="firstClass"')
 })
+
+test('babelOptions should work for assumptions', () => {
+  const {ast, render, staticRenderFns, tips, errors} = templateCompiler.compile(
+      '<div :class="{[`${foo}_single`]: true}"></div>',
+      {
+        babelOptions: {
+          assumptions: {
+            setComputedProperties: false,
+          },
+        }
+      }
+    )
+
+  expect(render).toMatch('class: _defineProperty({}, `${_vm.foo}_single`, true)')
+})
