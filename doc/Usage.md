@@ -4,10 +4,10 @@
 - [Usage Detail](#Usage-Detail)
   - [vue-jest Usage](#1-vue-jest)
   - [Webpack Usage](#2-Webpack)
-  - [VueUse && `<script setup>`](#3-vueuse)
+  - [VueUse && `<script setup>`](#3-vueuse--script-setup)
 - [Caveats](#Caveats)
   - [Functional Component Usage](#1-Functional-Component-Usage)
-  - [Only Substitute `vue-template-es2015-compiler`](#2-Only-Substitute-vue-templat-es2015-compiler)
+  - [Only Substitute `vue-template-es2015-compiler`](#2-only-substitute-vue-template-es2015-compiler)
   - [Prevent been compiled by other babel config](#3-Prevent-been-compiled-by-other-babel-config)
 
 ## Usage Detail

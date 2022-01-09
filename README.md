@@ -31,7 +31,7 @@ Enable `Optional Chaining(?.)`, `Nullish Coalescing(??)` and many new ES syntax 
 ## Features
 - All features of [vue-template-compiler](https://github.com/vuejs/vue/tree/dev/packages/vue-template-compiler#readme) && [vue-template-es2015-compiler](https://github.com/vuejs/vue-template-es2015-compiler)
 - new ES syntax: `Optional Chaining`, `Bigint`, `Nullish Coalescing` and more
-- Customization syntax, babel plugin...
+- Customization syntax, babel options...
 
 ## Usage
 ### 1. Install
