@@ -71,7 +71,7 @@ Example Project: https://github.com/JuniorTour/vue-template-babel-compiler-VueUs
 
 We have to rename `functional component .vue file` to contain `.functional` mark.
 
-[Example Functional Component .vue file link](https://github.com/JuniorTour/vue-template-babel-compiler-vue-cli-project/blob/main/src/components/FunctionalComponent.functional.vue)
+> [Example Functional Component .vue file link](https://github.com/JuniorTour/vue-template-babel-compiler-vue-cli-project/blob/main/src/components/FunctionalComponent.functional.vue)
 
 You can customize the mark by `functionalComponentFileIdentifier` option :
 ``` js

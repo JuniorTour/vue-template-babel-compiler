@@ -77,7 +77,7 @@ export default {
 ## [Doc](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/Usage.md)
 - [vue-jest Usage](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/Usage.md#1-vue-jest)
 - [Webpack Usage](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/Usage.md#2-webpack)
-- [VueUse && `<script setup>` Usage](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/Usage.md#3-vueuse)
+- [VueUse && `<script setup>` Usage](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/Usage.md#3-vueuse--script-setup)
 - [Functional Component Usage](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/Usage.md#1-functional-component-usage)
 
 ## [API](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/API.md)
