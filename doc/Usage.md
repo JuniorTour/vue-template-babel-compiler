@@ -101,8 +101,10 @@ export default {
   build: {
     loaders: {
       vue: {
-        babelOptions: {
+        compilerOptions: {
+          babelOptions: {
             /* ... */
+          },
         },
         compiler: require('vue-template-babel-compiler')
       }

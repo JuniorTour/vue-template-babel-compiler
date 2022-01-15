@@ -81,7 +81,7 @@ So when we reproduce the error, we can use `node --inspect-brk file.js --runInBa
 
 There are also [built-in npm script in the Example Projects](https://github.com/JuniorTour/vue-template-babel-compiler-vue-cli-project/blob/main/package.json#L9):
 ```shell script
-yarn inspect
+yarn debugDev
 ```
 
 After execute `node --inspect-brk`,

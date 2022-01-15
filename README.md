@@ -23,6 +23,11 @@ Enable `Optional Chaining(?.)`, `Nullish Coalescing(??)` and many new ES syntax 
     src="https://img.shields.io/github/last-commit/JuniorTour/vue-template-babel-compiler?sanitize=true"
     alt="LastCommit">
   </a>
+  <a href="https://github.com/JuniorTour/vue-template-babel-compiler">
+    <img
+    src="https://img.shields.io/github/workflow/status/JuniorTour/vue-template-babel-compiler/CI"
+    alt="CIStatus">
+  </a>
 </p>
 
 ## DEMO
@@ -84,4 +89,4 @@ export default {
 ## [API](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/doc/API.md)
 
 
-### Welcome for Issues && PR.
+### Welcome for Issues && PR, see [CONTRIBUTING.md](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/CONTRIBUTING.md) for detail.
