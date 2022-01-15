@@ -79,7 +79,7 @@ module.exports = {
             .rule('vue')
             .use('vue-loader')
             .tap(options => {
-                options.babelOptions = {
+                options.compilerOptions.babelOptions = {
                     filename: 'newFilename',
                     newProp: true,
                     assumptions: {
