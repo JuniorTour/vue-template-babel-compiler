@@ -158,6 +158,29 @@ test('should work for computed property accessing in optional chaining', () => {
   expect(vm.$el.innerHTML).toMatch(`<h1>optional chaining worked</h1>`)
 })
 
+test('should work for optional function calling as event handler', () => {
+  let called = false
+  new Vue({
+    ...compileAsFunctions(`
+      <child @hook:mounted="handler?.()" />
+    `),
+    data() {
+      return {
+        handler: function () {
+          called = true
+        }
+      }
+    },
+    components: {
+      child: {
+        render(h) { return h(null) }
+      }
+    }
+  }).$mount()
+
+  expect(called).toBeTruthy()
+})
+
 test('should work for __staticRenderFns__', () => {
   const transpileResult = transpileWithOption(`
 var __render__ = function () {with (this) {return _m(0)}}
