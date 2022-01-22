@@ -23,9 +23,9 @@ Enable `Optional Chaining(?.)`, `Nullish Coalescing(??)` and many new ES syntax 
     src="https://img.shields.io/github/last-commit/JuniorTour/vue-template-babel-compiler?sanitize=true"
     alt="LastCommit">
   </a>
-  <a href="https://github.com/JuniorTour/vue-template-babel-compiler">
+  <a href="https://github.com/JuniorTour/vue-template-babel-compiler/actions/workflows/main.yml">
     <img
-    src="https://img.shields.io/github/workflow/status/JuniorTour/vue-template-babel-compiler/CI"
+    src="https://github.com/JuniorTour/vue-template-babel-compiler/actions/workflows/main.yml/badge.svg"
     alt="CIStatus">
   </a>
 </p>
