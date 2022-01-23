@@ -131,3 +131,18 @@ test('babelOptions should work for assumptions', () => {
 
   expect(render).toMatch('class: _defineProperty({}, `${_vm.foo}_single`, true)')
 })
+
+test('should treat iterable as array', () => {
+  // #31, #25
+  const {ast, render, staticRenderFns, tips, errors} = templateCompiler.compile(`
+  <div>
+    <div v-for="[one, two] in [[1,2]]">
+    {{one}}+{{two}}
+    </div>
+  </div>`)
+
+  expect(errors.length === 0).toBeTruthy()
+  // expect(vm.$el.innerHTML).toMatch('1+2')
+  expect(render).not.toMatch('_maybeArrayLike')
+  expect(render).toMatch('_vm._s(one) + "+" + _vm._s(two)')
+})

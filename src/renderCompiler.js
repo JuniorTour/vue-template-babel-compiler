@@ -19,7 +19,7 @@ export function renderCompiler(code, options) {
     sourceType: 'script',
     assumptions: {
       setComputedProperties: true,
-      arrayLikeIsIterable: true,
+      iterableIsArray: true,
     },
     plugins: [
       '@babel/plugin-transform-computed-properties',
