@@ -151,13 +151,13 @@ That is the reason why we need `Unit Test` based on [jest](https://jestjs.io/) .
 When we add new code, it will be better to add some test case to ensure our new code never break by others later added.
 
 ### Write test case is Easy!
-#### A. find a `*.spec.js` file to write
+#### A. Find a `*.spec.js` file to write
 
-#### B. Copy the reproduce code snippet above with `jest API`
+#### B. Add new test case based on `jest API`
 
 > If you are not familiar with [jest](https://jestjs.io/), its Doc and [Google](https://google.com/) will help you.
-> You can also refer to the [existing cases of this project](https://github.com/JuniorTour/vue-template-babel-compiler/tree/main/test)
 
+> You can also refer to the [existing cases of this project](https://github.com/JuniorTour/vue-template-babel-compiler/tree/main/test), or just copy the reproduce code snippet, and modify its content.
 ``` js
 test('should use simple assign for computed properties', () => {
   // https://github.com/JuniorTour/vue-template-babel-compiler/issues/13
@@ -170,7 +170,7 @@ test('should use simple assign for computed properties', () => {
 })
 ```
 
-#### C. Run `yarn test`
+#### C. Check test case by run `yarn test`
 Make sure you see:
 ```shell script
 // ...
@@ -183,6 +183,10 @@ Done in 11.64s.
 ```
 
 This means your code doesn't break anything :)
+
+#### Debug test case:
+- add `debugger` to your test case code.
+- run `yarn debugTest` will start Chome DevTool like [3-locate-error](https://github.com/JuniorTour/vue-template-babel-compiler/blob/main/CONTRIBUTING.md#3-locate-error)
 
 ## 7. Git commit and Push
 
