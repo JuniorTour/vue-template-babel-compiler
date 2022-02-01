@@ -22,12 +22,14 @@ function getFunctionBody(code) {
 function getArrayItems(code) {
   const range = getMarkRange(code, '[', ']')
   return code.substring(range.start, range.end)
-    .split('function')
+    .split(staticRenderFnsSpliter)
     .filter((functionBodyStr) => Boolean(functionBodyStr))
     .map(getFunctionBody)
 }
 
 const renderSeparator = '/* renderSeparator */'
+const staticRenderFnsSpliter = '/* staticRenderFnsSpliter */'
+
 
 export function compileTemplate(source, options) {
   const isFunctional = options?.filename
@@ -39,7 +41,7 @@ export function compileTemplate(source, options) {
   let code = `var render = ${toFunction(render, isFunctional)}` + ';'+ renderSeparator
   const hasStaticRenders = staticRenderFns.length
   if (hasStaticRenders) {
-    code += `var staticRenderFns = [${staticRenderFns.map((render) => toFunction(render, isFunctional))}]`
+    code += `var staticRenderFns = [${staticRenderFns.map((render) => staticRenderFnsSpliter + toFunction(render, isFunctional))}]`
   }
 
   if (!options) {
