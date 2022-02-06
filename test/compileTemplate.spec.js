@@ -142,7 +142,41 @@ test('should treat iterable as array', () => {
   </div>`)
 
   expect(errors.length === 0).toBeTruthy()
-  // expect(vm.$el.innerHTML).toMatch('1+2')
   expect(render).not.toMatch('_maybeArrayLike')
   expect(render).toMatch('_vm._s(one) + "+" + _vm._s(two)')
+})
+
+test('should split staticRenderFns correct', () => {
+  // #34
+  const {ast, render, staticRenderFns, tips, errors} = templateCompiler.compile(`
+  <div>
+    <div data-class="function">1</div>
+  </div>`)
+
+  expect(errors.length === 0).toBeTruthy()
+  expect(staticRenderFns.length === 1).toBeTruthy()
+  expect(staticRenderFns[0]).toMatch(`"data-class": "function"`)
+})
+
+
+test('should split multiple staticRenderFns correct', () => {
+  const {ast, render, staticRenderFns, tips, errors} = templateCompiler.compile(`
+  <div>
+    <h1>{{header}}</h1>
+    <ul>
+        <li>static1</li>
+    </ul>
+    <ul>
+        <li>static2</li>
+    </ul>
+    <ul>
+        <li>static3</li>
+    </ul>
+  </div>`)
+
+  expect(errors.length === 0).toBeTruthy()
+  expect(staticRenderFns.length === 3).toBeTruthy()
+  expect(staticRenderFns[0]).toMatch(`_vm._v("static1")`)
+  expect(staticRenderFns[1]).toMatch(`_vm._v("static2")`)
+  expect(staticRenderFns[2]).toMatch(`_vm._v("static3")`)
 })

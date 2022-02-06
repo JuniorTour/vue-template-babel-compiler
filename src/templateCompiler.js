@@ -22,7 +22,8 @@ function getFunctionBody(code) {
 function getArrayItems(code) {
   const range = getMarkRange(code, '[', ']')
   return code.substring(range.start, range.end)
-    .split(staticRenderFnsSpliter)
+    // after babel compile, will add '\n' to after and end of /**/
+    .split(staticRenderFnsSpliter + '\n')
     .filter((functionBodyStr) => Boolean(functionBodyStr))
     .map(getFunctionBody)
 }
@@ -41,7 +42,10 @@ export function compileTemplate(source, options) {
   let code = `var render = ${toFunction(render, isFunctional)}` + ';'+ renderSeparator
   const hasStaticRenders = staticRenderFns.length
   if (hasStaticRenders) {
-    code += `var staticRenderFns = [${staticRenderFns.map((render) => staticRenderFnsSpliter + toFunction(render, isFunctional))}]`
+    code += `var staticRenderFns = [${
+       staticRenderFns
+      .map((render) => toFunction(render, isFunctional) + staticRenderFnsSpliter)
+    }]`
   }
 
   if (!options) {
