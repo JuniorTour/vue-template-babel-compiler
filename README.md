@@ -3,27 +3,27 @@
 Enable `Optional Chaining(?.)`, `Nullish Coalescing(??)` and many new ES syntax for [Vue.js SFC](https://vuejs.org/v2/guide/single-file-components.html) based on [Babel](https://babeljs.io/).
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/vue-template-babel-compiler">
+  <a href="https://www.npmjs.com/package/vue-template-babel-compiler" target="_blank">
     <img
     src="https://img.shields.io/npm/dt/vue-template-babel-compiler"
     alt="Downloads">
   </a>
-  <a href="https://www.npmjs.com/package/vue-template-babel-compiler">
+  <a href="https://www.npmjs.com/package/vue-template-babel-compiler" target="_blank">
     <img
     src="https://img.shields.io/github/size/JuniorTour/vue-template-babel-compiler/lib/index.js"
     alt="Size">
   </a>
-  <a href="https://www.npmjs.com/package/vue-template-babel-compiler">
+  <a href="https://www.npmjs.com/package/vue-template-babel-compiler" target="_blank">
     <img
     src="https://img.shields.io/npm/v/vue-template-babel-compiler.svg?sanitize=true"
     alt="Version">
   </a>
-  <a href="https://github.com/JuniorTour/vue-template-babel-compiler">
+  <a href="https://github.com/JuniorTour/vue-template-babel-compiler" target="_blank">
     <img
     src="https://img.shields.io/github/last-commit/JuniorTour/vue-template-babel-compiler?sanitize=true"
     alt="LastCommit">
   </a>
-  <a href="https://github.com/JuniorTour/vue-template-babel-compiler/actions/workflows/main.yml">
+  <a href="https://github.com/JuniorTour/vue-template-babel-compiler/actions/workflows/main.yml" target="_blank">
     <img
     src="https://github.com/JuniorTour/vue-template-babel-compiler/actions/workflows/main.yml/badge.svg"
     alt="CIStatus">
@@ -31,7 +31,10 @@ Enable `Optional Chaining(?.)`, `Nullish Coalescing(??)` and many new ES syntax 
 </p>
 
 ## DEMO
-[Visit Online Playground →](https://stackblitz.com/edit/github-vue-template-babel-compiler-cnvbcs?file=components%2FTutorial.vue&terminal=dev)
+<a href="https://stackblitz.com/edit/github-vue-template-babel-compiler-cnvbcs?file=components%2FTutorial.vue&terminal=dev" target="_blank">
+Visit Online Playground →
+</a>
+
 ![DEMO](https://user-images.githubusercontent.com/14243906/127761300-076db45a-cdce-4fda-bd02-1f4fa96de6d8.png)
 
 ## Features
@@ -48,7 +51,9 @@ npm install vue-template-babel-compiler --save-dev
 ### 2. Config
 #### 1. [Vue-CLI](https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader)
 
-[Vue-CLI Online Example Project](https://stackblitz.com/edit/vue-template-babel-compiler-vue-cli-project?file=src%2FApp.vue&terminal=serve)
+<a href="https://stackblitz.com/edit/vue-template-babel-compiler-vue-cli-project?file=src%2FApp.vue&terminal=serve" target="_blank">
+Vue-CLI Online Example Project
+</a>
 
 ``` js
 // vue.config.js
@@ -67,7 +72,9 @@ module.exports = {
 
 #### 2. [Nuxt.js](https://nuxtjs.org/docs/2.x/features/configuration#extend-webpack-to-load-audio-files)
 
-[Nuxt.js Online Example Project](https://stackblitz.com/edit/github-vue-template-babel-compiler-cnvbcs?file=components%2FTutorial.vue&terminal=dev)
+<a href="https://stackblitz.com/edit/github-vue-template-babel-compiler-cnvbcs?file=components%2FTutorial.vue&terminal=dev" target="_blank">
+Nuxt.js Online Example Project
+</a>
 
 ``` js
 // nuxt.config.js
