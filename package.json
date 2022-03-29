@@ -31,6 +31,9 @@
     "vue": "^2.6.0",
     "vue-template-compiler": "^2.6.0"
   },
+  "peerDependencies": {
+    "vue-template-compiler": "^2.6.0"
+  },
   "dependencies": {
     "@babel/core": "^7.14.3",
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.14.5",
