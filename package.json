@@ -9,7 +9,7 @@
     "lib/index.js"
   ],
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=14.0.0"
   },
   "scripts": {
     "build": "rollup -c rollup.config.js",
