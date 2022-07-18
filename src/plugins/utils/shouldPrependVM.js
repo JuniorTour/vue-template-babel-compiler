@@ -47,6 +47,7 @@ export function shouldPrependVm(path) {
     && !scope?.block.params?.find(node => node.name === nodeName)
     // not already in scope
     && !inScope(scope, nodeName)
+    && !t.isObjectMethod(path.container)
   ) {
     return true
   }

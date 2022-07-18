@@ -300,3 +300,15 @@ test('spread should allowArrayLike ', () => {
 
   expect(vm.$el.innerHTML).toMatch('1')
 })
+
+test('should work for object method', () => {
+  const vm = new Vue({
+    ...compileAsFunctions(`
+      <div>
+        <h1 :rules="[{ transform(value) { return +value} }]">object method worked</h1>
+      </div>
+    `),
+  }).$mount()
+
+  expect(vm.$el.innerHTML).toMatch(`<h1 rules=\"[object Object]\">object method worked</h1>`)
+})
