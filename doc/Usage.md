@@ -66,6 +66,60 @@ module.exports = {
 
 Example Project: https://github.com/JuniorTour/vue-template-babel-compiler-VueUse-Example
 
+```js
+// vue.config.js
+module.exports = {
+    parallel: false,  // disable thread-loader, which is not compactible with this plugin
+    chainWebpack: config => {
+        // disable type check and let `vue-tsc` handles it
+        config.plugins.delete('fork-ts-checker')
+        config.module
+            .rule('vue')
+            .use('vue-loader')
+            .tap(options => {
+                options.compiler = require('vue-template-babel-compiler')
+                return options
+            })
+    },
+    configureWebpack: {
+        plugins: [
+            require('unplugin-vue2-script-setup/webpack')({ /* options */ }),
+        ],
+    },
+}
+```
+
+
+#### 4. Vite usage
+
+##### 1. With `vite-plugin-vue2` plugin (https://github.com/vitejs/vite-plugin-vue2)
+
+``` js
+// vite.config.js
+import { defineConfig } from "vite";
+import { createVuePlugin } from "vite-plugin-vue2";
+
+export default defineConfig({
+  plugins: [
+    createVuePlugin({
+      jsx: true,
+      vueTemplateOptions: {
+        compiler: require('vue-template-babel-compiler'),
+      },
+    }),
+  ],
+});
+```
+
+##### 2. With `vite-plugin-vue2` plugin (https://www.npmjs.com/package/vite-plugin-vue2)
+
+This plugin contains `vue-template-babel-compiler@1.2.0` out of box: https://github.com/underfin/vite-plugin-vue2/blob/master/package.json#L71
+
+Just add `vite-plugin-vue2` plugin, new syntax including `optional chaining` will work.
+
+If you need new version, just `npm install vue-template-babel-compiler@latest`.
+
+
 ## Options
 
 ### 1. babel options customization
