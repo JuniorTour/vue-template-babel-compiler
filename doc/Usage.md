@@ -15,22 +15,21 @@
 ## Usage Detail
 
 #### 1. [vue-jest](https://github.com/JuniorTour/vue-template-babel-compiler/issues/8)
-[DEMO project for vue-jest && Nuxt.js](https://github.com/JuniorTour/vue-template-babel-compiler-nuxt-project/commit/633ac52a7787fb416e4b35a8074a8d9c6a71b43c)
+- [vue-jest@26 DEMO commit](https://github.com/JuniorTour/vue-template-babel-compiler-nuxt-project/commit/633ac52a7787fb416e4b35a8074a8d9c6a71b43c)
+- [vue-jest@28 DEMO commit](https://github.com/JuniorTour/vue-template-babel-compiler-nuxt-project/commit/4c475274cc5eedf4aa918cca53e29bd346af197a)
 
-> Only work for `vue-jest >= 4.0.0` && `jest <= 26.6.3`
 
 ``` js
 // jest.config.js
 module.exports = {
+  testEnvironment: "jsdom",
   moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/$1',
-    '^~/(.*)$': '<rootDir>/$1',
-    '^vue$': 'vue/dist/vue.common.js',
+    "^vue$": "vue/dist/vue.common.js"
   },
-  moduleFileExtensions: ['js', 'vue', 'json'],
+  moduleFileExtensions: ["js", "vue", "json"],
   transform: {
-    '^.+\\.js$': 'babel-jest',
-    '.*\\.(vue)$': 'vue-jest',
+    "^.+\\.js$": "babel-jest",
+    ".*\\.(vue)$": "@vue/vue2-jest"
   },
   globals: {
     'vue-jest': {
@@ -39,7 +38,7 @@ module.exports = {
       }
     }
   }
-}
+};
 ```
 
 #### 2. [Webpack](https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader)
